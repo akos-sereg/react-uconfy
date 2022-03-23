@@ -1,2 +1,0 @@
-[build]
-  functions = "lambdas/build" #  netlify-lambda reads this for local dev server
