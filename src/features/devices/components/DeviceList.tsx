@@ -2,9 +2,9 @@ import { RootState } from 'MyTypes';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import * as selectors from '../selectors';
+import * as selectors from '../../articles/selectors';
 
-import ArticleListItem from './ArticleListItem';
+import DeviceListItem from '../../devices/components/DeviceListItem';
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.articles.isLoadingArticles,
@@ -15,7 +15,7 @@ const dispatchProps = {};
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchProps;
 
-const ArticleList: React.FC<Props> = ({
+const DeviceList: React.FC<Props> = ({
   isLoading,
   articles: articles = [],
   devices: devices = [],
@@ -33,23 +33,13 @@ const ArticleList: React.FC<Props> = ({
   }
 
   return (
-    <ul style={getStyle()}>
-      {devices.map(device => (
-        <li key={device.deviceID}>
-          <ArticleListItem device={device} />
-        </li>
-      ))}
-    </ul>
+    <div>
+      {devices.map(device => (<DeviceListItem key={device.deviceID} device={device} />))}
+    </div>
   );
 };
-
-const getStyle = (): React.CSSProperties => ({
-  textAlign: 'left',
-  margin: 'auto',
-  maxWidth: 500,
-});
 
 export default connect(
   mapStateToProps,
   dispatchProps
-)(ArticleList);
+)(DeviceList);

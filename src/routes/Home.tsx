@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ArticleList from '../features/articles/components/ArticleList';
+import DeviceList from '../features/devices/components/DeviceList';
 import Main from '../layouts/Main';
 
 export default () => (
   <Main>
-    <ArticleList />
+    <DeviceList />
   </Main>
 );

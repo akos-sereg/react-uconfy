@@ -11,7 +11,7 @@ type Props = typeof dispatchProps & {
   device: Device;
 };
 
-const ArticleListItem = React.memo<Props>(({ device, deleteArticle }) => {
+const DeviceListItem = React.memo<Props>(({ device, deleteArticle }) => {
   return (
     <>
         {device.name}
@@ -23,4 +23,4 @@ const ArticleListItem = React.memo<Props>(({ device, deleteArticle }) => {
 export default connect(
   null,
   dispatchProps
-)(ArticleListItem);
+)(DeviceListItem);
