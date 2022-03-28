@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
 
 import './Main.css';
-import logo from '../assets/logo.svg';
-import FlexRow from '../components/FlexRow';
+import AppHeader from '../components/AppHeader';
+import Navigation from '../components/Navigation';
 
 type Props = {
   renderActionsMenu?: () => JSX.Element;
@@ -11,22 +10,8 @@ type Props = {
 
 const Main: FC<Props> = ({ children, renderActionsMenu }) => (
   <div className="App">
-    <header className="App-header">
-      <FlexRow
-        grow={1}
-        align="center"
-        justify="space-between"
-        style={{ padding: '0 60px' }}
-      >
-        <FlexRow align="center">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Link className="App-link" to="/">
-            Demo AppX
-          </Link>
-        </FlexRow>
-        {renderActionsMenu && renderActionsMenu()}
-      </FlexRow>
-    </header>
+    <AppHeader />
+    <Navigation path={[ { name: 'Devices' } ]} />
     <main className="App-main">{children}</main>
   </div>
 );

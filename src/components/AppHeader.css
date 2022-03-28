@@ -1,0 +1,29 @@
+.uconfy_logo {
+    font-weight: bold;
+    font-size: 32pt;
+    text-decoration: none;
+    color: #000000;
+}
+
+.uconfy_logo:hover {
+    text-decoration: none;
+}
+
+.uconfy_logo_black {
+    color: #000000;
+    top: -30px;
+    position: relative;
+    text-decoration: none;
+}
+
+.uconfy_logo_black {
+    text-decoration: none;
+}
+
+.nav_link {
+    margin-left: 30px;
+}
+
+.fullwidth {
+    width: 100%;
+}
