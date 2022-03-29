@@ -1,0 +1,43 @@
+.device-list-item-container {
+    border-radius: 8px;
+    width: 220px;
+    height: 120px;
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 10pt;
+    float: left;
+}
+
+.device-list-item-last-seen {
+    margin-top: 20px;
+}
+
+.device-seen-never {
+    background-color: #ffffff;
+    border: solid 1px #E8E7D9;
+}
+
+.device-seen-never:hover {
+    border: solid 1px #D6D4BB;
+}
+
+.device-seen-recently {
+    background-color: #E9F8E4;
+    border: solid 1px #C2E8B5;
+}
+
+.device-seen-recently:hover {
+    border: solid 1px #88C773;
+}
+
+.device-seen-a-while-ago {
+    background-color: #FBFAF5;
+    border: solid 1px #E8E7D9;
+}
+
+.device-seen-a-while-ago:hover {
+    border: solid 1px #D6D4BB;
+}
+

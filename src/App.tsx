@@ -8,6 +8,7 @@ import Home from './routes/Home';
 import { getPath } from './router-paths';
 import AddArticle from './routes/AddArticle';
 import ViewArticle from './routes/ViewArticle';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   render() {

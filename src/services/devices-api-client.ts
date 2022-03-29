@@ -11,9 +11,12 @@ export function loadDevices(): Promise<Device[]> {
         axios.get('http://127.0.0.1:8080/api/device',
             {
                 headers: {
-                    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMjQwIiwiZW1haWwiOiJkZW1vdXNlckBkZW1vLmRlIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiNTkwZGRlNTktNGI4My00M2NiLThlY2UtMWM3MWQ1ZGNiN2M3Iiwicm9sZSI6ImRlbW8iLCJuYmYiOjE2NDc1NDQ3ODgsImV4cCI6MTY3OTA4MDc4OCwiaWF0IjoxNjQ3NTQ0Nzg4LCJpc3MiOiJodHRwOi8vbXlzaXRlLmNvbSIsImF1ZCI6Imh0dHA6Ly9teWF1ZGllbmNlLmNvbSJ9.bvomBIkfN3Aymum6MxQY6jdujHrCff1pn3to9jOGqo8'
+                    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMjM0IiwiZW1haWwiOiJha29zLnNlcmVnQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6Ijc2MTIzNTQ1NjEyMzQ3ODEyNTYzNDcxMjM1NjQiLCJyb2xlIjoidXNlciIsIm5iZiI6MTY0ODU4MTk2MywiZXhwIjoxNjgwMTE3OTYzLCJpYXQiOjE2NDg1ODE5NjMsImlzcyI6Imh0dHA6Ly9teXNpdGUuY29tIiwiYXVkIjoiaHR0cDovL215YXVkaWVuY2UuY29tIn0.5hsN3ueGkbM32Ct2raCBpKshblgQGluKz1LerStBcho'
                 }
             }).then(function (response) {
+                response.data.devices.forEach((device:Device) => {
+                    device.lastSeen = response.data.deviceIdLastSeen[device.deviceID]
+                });
                 resolve(response.data.devices);
             }).catch(function (error) {
                 reject("Unable to fetch devices");

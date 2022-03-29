@@ -14,11 +14,7 @@ const reducer = combineReducers({
       (state, action) => false
     ),
   devices: createReducer([] as Device[])
-    .handleAction(
-      [
-        loadDevicesAsync.success,
-      ],
-      (state, action) => action.payload
+    .handleAction([loadDevicesAsync.success], (state, action) => action.payload
   ),
 });
 

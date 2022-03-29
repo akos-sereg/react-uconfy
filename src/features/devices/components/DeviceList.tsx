@@ -1,10 +1,9 @@
 import { RootState } from 'MyTypes';
 import React from 'react';
 import { connect } from 'react-redux';
-
 import * as selectors from '../../articles/selectors';
-
 import DeviceListItem from '../../devices/components/DeviceListItem';
+import './DeviceList.css'
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.articles.isLoadingArticles,
@@ -33,7 +32,7 @@ const DeviceList: React.FC<Props> = ({
   }
 
   return (
-    <div>
+    <div className="device-list-container">
       {devices.map(device => (<DeviceListItem key={device.deviceID} device={device} />))}
     </div>
   );

@@ -9,6 +9,7 @@ declare module 'MyModels' {
     deviceID: string,
     name: string,
     platform: string,
-    userID: number
+    userID: number,
+    lastSeen: number,
   };
 }

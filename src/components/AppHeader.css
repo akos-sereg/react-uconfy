@@ -11,7 +11,7 @@
 
 .uconfy_logo_black {
     color: #000000;
-    top: -30px;
+    top: 10px;
     position: relative;
     text-decoration: none;
 }
@@ -21,7 +21,19 @@
 }
 
 .nav_link {
+    font-size: .875rem;
     margin-left: 30px;
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px;
+    border: solid 1px #ffffff;
+}
+
+.nav_link:hover {
+    color: #007bff;
+    border: solid 1px #CBE8F0;
+    border-radius: 4px;
+    background-color: #F1FCFF;
 }
 
 .fullwidth {
