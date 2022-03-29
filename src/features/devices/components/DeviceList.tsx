@@ -34,6 +34,7 @@ const DeviceList: React.FC<Props> = ({
   return (
     <div className="device-list-container">
       {devices.map(device => (<DeviceListItem key={device.deviceID} device={device} />))}
+      <div className="device-list-add-container">+ Add Device</div>
     </div>
   );
 };

@@ -3,3 +3,23 @@
     width: 100%;
     float: left;
 }
+
+.device-list-add-container {
+    border-radius: 8px;
+    width: 220px;
+    height: 120px;
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 10pt;
+    float: left;
+    border: dashed 1px #777777;
+    text-align: center;
+    padding-top: 45px;
+    color: #777777;
+}
+
+.device-list-add-container:hover {
+    color: #000000;
+}
