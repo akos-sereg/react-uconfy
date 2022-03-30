@@ -14,7 +14,7 @@
     cursor: pointer;
     font-size: 10pt;
     float: left;
-    border: dashed 1px #777777;
+    border: dashed 1px #cccccc;
     text-align: center;
     padding-top: 45px;
     color: #777777;
@@ -22,4 +22,5 @@
 
 .device-list-add-container:hover {
     color: #000000;
+    border: dashed 1px #777777;
 }

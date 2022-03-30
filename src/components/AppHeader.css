@@ -31,9 +31,7 @@
 
 .nav_link:hover {
     color: #007bff;
-    border: solid 1px #CBE8F0;
-    border-radius: 4px;
-    background-color: #F1FCFF;
+    text-decoration: underline;
 }
 
 .fullwidth {

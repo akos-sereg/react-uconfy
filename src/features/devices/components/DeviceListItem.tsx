@@ -1,19 +1,18 @@
 import { Device } from 'MyModels';
 import React from 'react';
 import areEqual from 'fast-deep-equal';
-import { connect } from 'react-redux';
 
 import './DeviceListItem.css';
 
-const dispatchProps = {
-  deleteArticle: (device: Device) => {},
-};
-
-type Props = typeof dispatchProps & {
+type Props = {
   device: Device;
 };
 
-const DeviceListItem = React.memo<Props>(({ device, deleteArticle }) => {
+const handleNavigateToDevice = (deviceID: string) => {
+    document.location.href = `#/device/${deviceID}`;
+};
+
+const DeviceListItem = React.memo<Props>(({ device }) => {
   let deviceClassNames = [ 'device-list-item-container' ];
   if (device.lastSeen === -1) {
     deviceClassNames.push('device-seen-never');
@@ -23,7 +22,7 @@ const DeviceListItem = React.memo<Props>(({ device, deleteArticle }) => {
     deviceClassNames.push('device-seen-a-while-ago');
   }
   return (
-    <div className={deviceClassNames.join(' ')}>
+    <div className={deviceClassNames.join(' ')} onClick={() => handleNavigateToDevice(device.deviceID)}>
         <b>{device.name}</b>
         {renderLastSeen(device.lastSeen)}
     </div>
@@ -70,8 +69,4 @@ const renderLastSeen = (lastSeenSeconds:number) => {
     );
 }
 
-
-export default connect(
-  null,
-  dispatchProps
-)(DeviceListItem);
+export default DeviceListItem;

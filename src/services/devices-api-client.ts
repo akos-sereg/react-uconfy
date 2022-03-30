@@ -8,6 +8,7 @@ let articles: Article[] = localStorage.get<Article[]>('articles') || [];
 export function loadDevices(): Promise<Device[]> {
     return new Promise(async (resolve, reject) => {
 
+        console.log('--> loadDevices');
         axios.get('http://127.0.0.1:8080/api/device',
             {
                 headers: {

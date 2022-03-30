@@ -8,6 +8,7 @@ import {
 } from './actions';
 
 export const loadDevicesEpic: RootEpic = (action$, state$, { api }) => {
+    console.log('--> loadDevicesEpic');
     const retval = action$.pipe(
            filter(isActionOf(loadDevicesAsync.request)),
            switchMap(() =>
@@ -19,4 +20,3 @@ export const loadDevicesEpic: RootEpic = (action$, state$, { api }) => {
          );
     return retval;
 }
-
