@@ -1,6 +1,14 @@
 {
-  "include": ["src", "typings", "lambdas/src"],
-  "exclude": ["src/**/*.spec.*"],
-  "extends": "./node_modules/react-redux-typescript-scripts/tsconfig.json",
-  "compilerOptions": {}
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "lib": [ "es2018", "dom" ],
+    "typeRoots" : ["node_modules/@types", "app/types"]
+  }
 }
