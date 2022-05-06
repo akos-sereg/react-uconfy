@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import './style.scss';
+import styles from './style.scss';
 
 class AboutPage extends Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -13,7 +13,7 @@ class AboutPage extends Component {
 
   render() {
     return (
-      <div className="about-page">
+      <div className={styles.about_page}>
         <Helmet>
           <title>About Page</title>
           <meta

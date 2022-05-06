@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './images/logo.png';
-import './style.scss';
+import styles from './style.scss';
 
 const Header = () => {
   return (
@@ -10,12 +10,12 @@ const Header = () => {
           <tr>
               <td>
                   <a href="/"><img src={Logo} width="80" /></a>
-                  <span className="uconfy_logo">µConfy</span>
+                  <span className={styles.uconfy_logo}>µConfy</span>
               </td>
               <td align="right">
-                  <a className="nav_link" href="/#">Home</a>
-                  <a className="nav_link" href="https://github.com/akos-sereg/esp32-uconfy-component/wiki" target="_blank">Documentation</a>
-                  <a className="nav_link" href="/#">Logout</a>
+                  <Link to="/" className={styles.nav_link}>Home</Link>
+                  <a className={styles.nav_link} href="https://github.com/akos-sereg/esp32-uconfy-component/wiki" target="_blank">Documentation</a>
+                  <a className={styles.nav_link} href="/#">Logout</a>
               </td>
           </tr>
       </tbody>

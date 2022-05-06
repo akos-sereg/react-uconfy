@@ -9,8 +9,9 @@ import MainPage from 'containers/MainPage/Loadable';
 import DeviceListPage from 'containers/DeviceListPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
+import Navigation from 'components/Navigation';
 import Footer from 'components/Footer';
-import './style.scss';
+import styles from './style.scss';
 
 const App = () => (
   <div>
@@ -18,11 +19,13 @@ const App = () => (
       <meta name="description" content="A React.js Boilerplate application" />
     </Helmet>
 
-    <div className={'center'}>
+    <div className={styles.center}>
       <Header />
+      <Navigation navigationPath={[{ name: 'uConfy', uri: '/#/' }]} />
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route path="/app" component={MainPage} />
+        <Route path="/login" component={MainPage} />
         <Route path="/devices" component={DeviceListPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/authors" component={AuthorsPage} />

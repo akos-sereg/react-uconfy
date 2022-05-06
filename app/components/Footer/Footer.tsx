@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './style.scss';
+import styles from './style.scss';
 
 const Footer = () => (
   <div>
-    <p className="footer">
+    <p className={styles.footer}>
       This web app is using React, Redux, Jest, Webpack, etc ...
     </p>
   </div>

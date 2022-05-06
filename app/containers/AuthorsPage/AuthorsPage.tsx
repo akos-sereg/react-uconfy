@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthorList from '../../components/AuthorList';
 import { Author } from '../../model/Author';
-import './style.scss';
+import styles from './style.scss';
 
 type Props = {
   authors: Author[],

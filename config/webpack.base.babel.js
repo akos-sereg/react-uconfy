@@ -35,7 +35,7 @@ module.exports = (options) => ({
         // Preprocess our own .scss files
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader?modules=true', 'sass-loader'],
       },
       {
         // Preprocess 3rd party .css files located in node_modules

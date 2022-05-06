@@ -7,8 +7,16 @@ import saga from './saga';
 import reducer from './reducer';
 import DeviceListPage from './DeviceListPage';
 import { fetchAuthors, deleteAuthor } from './actions';
+import { setNavigation } from '../../components/Navigation/actions';
 
 const mapDispatchToProps = (dispatch) => ({
+  updateNavigation: () => {
+    dispatch(setNavigation(
+      [
+        { name: 'uConfy', uri: '/#/' },
+        { name: 'Devices' },
+      ]));
+  },
 });
 
 const mapStateToProps = createStructuredSelector({

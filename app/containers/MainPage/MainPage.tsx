@@ -1,16 +1,21 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import './style.scss';
+import styles from './style.scss';
 
-class MainPage extends Component {
+type Props = {
+  updateNavigation: Function
+};
+
+class MainPage extends Component<Props> {
   // eslint-disable-line react/prefer-stateless-function
 
-  shouldComponentUpdate() {
-    return false;
+  componentDidMount() {
+    this.props.updateNavigation();
   }
 
   render() {
+    console.log(styles);
     return (
       <div>
         <Helmet>
@@ -21,7 +26,20 @@ class MainPage extends Component {
           />
         </Helmet>
 
-        Main
+        <table className={styles.loginFormTable}>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td>
+                <div className="input-group">
+                  <span className="input-group-addon" id="basic-addon1">@</span>
+                  <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }

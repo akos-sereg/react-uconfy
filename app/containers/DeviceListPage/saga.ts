@@ -7,6 +7,6 @@ export function* getAuthors() {
 
 export default function* rootSaga() {
   yield [
-    takeLatest('', getAuthors),
+    takeLatest('sadfasdf', getAuthors),
   ];
 }
