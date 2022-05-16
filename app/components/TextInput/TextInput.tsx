@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { FC, ChangeEventHandler, useRef } from 'react';
+import { FC, ChangeEventHandler, KeyboardEventHandler, useRef } from 'react';
 
 type Props = {
   name: string,
-  label: string,
   onChange: ChangeEventHandler<HTMLInputElement>,
+  onKeyUp?: KeyboardEventHandler<HTMLInputElement>,
+  label?: string,
   placeholder?: string,
   value?: string,
-  error?: any
+  error?: any,
+  type?: string
 };
 
-const TextInput: FC<Props> = ({ name, label, onChange, placeholder, value, error }) => {
+const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, error }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += ' has-error';
@@ -20,16 +22,17 @@ const TextInput: FC<Props> = ({ name, label, onChange, placeholder, value, error
   return (
     <div className={wrapperClass}>
       {/* eslint-disable jsx-a11y/label-has-for */}
-      <label htmlFor={name}>{label}</label>
+      {label != null && (<label htmlFor={name}>{label}</label>)}
       <div className="field">
         <input
-          type="text"
+          type={type ? type : 'text'}
           name={name}
           className="form-control"
           placeholder={placeholder}
           ref={inputRef}
           value={value}
           onChange={onChange}
+          onKeyUp={onKeyUp}
         />
         <div className="input">{error}</div>
       </div>

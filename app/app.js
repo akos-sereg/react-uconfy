@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import FontFaceObserver from 'fontfaceobserver';
+import { setNavigation } from 'components/Navigation/actions';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -47,6 +48,24 @@ openSansObserver.load().then(() => {
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
+const updateLocation = () => {
+  switch (document.location.hash) {
+    case '#/':
+      store.dispatch(setNavigation([
+           { name: 'uConfy', uri: '/#/' },
+           { name: 'Login' },
+         ]));
+      break;
+    case '#/devices':
+      store.dispatch(setNavigation([
+           { name: 'uConfy', uri: '/#/' },
+           { name: 'Devices' },
+         ]));
+      break;
+  }
+}
+
+history.listen(updateLocation);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
@@ -73,3 +92,4 @@ if (module.hot) {
 }
 
 render();
+updateLocation();

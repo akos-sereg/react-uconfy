@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
+// import injectReducer from 'utils/injectReducer';
+// import injectSaga from 'utils/injectSaga';
 // import saga from './saga';
 // import reducer from './reducer';
 import MainPage from './MainPage';
@@ -10,6 +10,7 @@ import MainPage from './MainPage';
 import { setNavigation } from '../../components/Navigation/actions';
 
 const mapDispatchToProps = (dispatch: any) => ({
+  dispatch: dispatch,
   updateNavigation: () => {
     dispatch(setNavigation(
       [
@@ -28,3 +29,4 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withConnect)(MainPage);
 export { mapDispatchToProps };
+

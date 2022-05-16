@@ -15,7 +15,7 @@ type Props = {
 class DeviceListPage extends Component<Props> {
 
   componentDidMount() {
-    this.props.updateNavigation();
+    // this.props.updateNavigation();
   }
 
   render() {
