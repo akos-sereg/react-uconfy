@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet';
 import TextInput from '../../components/TextInput';
 import { setNavigation } from '../../components/Navigation/actions';
+import { login } from './actions';
 import styles from './style.scss';
 
 type Props = {
@@ -15,7 +16,7 @@ type State = {
   username: string,
 };
 
-const MainPage = (props: Props) => {
+const LoginPage = (props: Props) => {
 
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
   /*props.dispatch(setNavigation([
@@ -26,6 +27,7 @@ const MainPage = (props: Props) => {
   const handleSignIn = (event: any) => {
     event.preventDefault();
     console.log('Sign in clicked');
+    props.dispatch(login(loginForm.username, loginForm.password));
   }
 
   const handlePasswordKeyUp = (event: any) => {
@@ -56,9 +58,49 @@ const MainPage = (props: Props) => {
         />
       </Helmet>
 
-      Main page
+      <table className={styles.loginFormTable}>
+        <tbody>
+          <tr>
+            <td id="titleColumn">
+              Username
+            </td>
+            <td>
+              <div className="input-group">
+                <TextInput name={'username'} onChange={handleTextChange} />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className={styles.titleColumn}>
+              Password
+            </td>
+            <td>
+              <div className="input-group">
+                <TextInput
+                  name={'password'}
+                  type={"password"}
+                  onChange={handleTextChange}
+                  onKeyUp={handlePasswordKeyUp}
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className={styles.titleColumn}>
+            </td>
+            <td>
+              <button
+                onClick={(e) => handleSignIn(e)}
+                type="button"
+                className="btn btn-default navbar-btn">
+                Sign in
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default MainPage;
+export default LoginPage;

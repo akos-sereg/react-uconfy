@@ -7,6 +7,7 @@ import AboutPage from 'containers/AboutPage/Loadable';
 import AuthorsPage from 'containers/AuthorsPage/index';
 import ManageAuthorPage from 'containers/ManageAuthorPage/index';
 import MainPage from 'containers/MainPage/Loadable';
+import LoginPage from 'containers/LoginPage/index';
 import DeviceListPage from 'containers/DeviceListPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -26,7 +27,8 @@ const App = () => {
          <Header />
          <Navigation navigationPath={[{ name: 'uConfy', uri: '/#/' }]} />
          <Switch>
-           <Route exact path="/" component={MainPage} />
+           <Route exact path="/" component={LoginPage} />
+           <Route exact path="/login" component={LoginPage} />
            <Route path="/app" component={MainPage} />
            <Route path="/login" component={MainPage} />
            <Route path="/devices" component={DeviceListPage} />
