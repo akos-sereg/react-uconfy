@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
+import { createStructuredSelector, createSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import saga from './saga';
@@ -19,14 +19,27 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+// ---------------------------------------------------------------------
+// State handling
+// ---------------------------------------------------------------------
+const selectGlobal = (state) => state.get('loginPage');
+
+const isProcessingSelector = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.isProcessing
+);
+
 const mapStateToProps = createStructuredSelector({
+  isProcessing: isProcessingSelector()
 });
 
+// ---------------------------------------------------------------------
+// Compose component
+// ---------------------------------------------------------------------
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'loginPage', reducer });
 const withSaga = injectSaga({ key: 'loginPage', saga });
 
 export default compose(withReducer, withSaga, withConnect)(LoginPage);
-// export default compose(withConnect)(MainPage);
 export { mapDispatchToProps };
 

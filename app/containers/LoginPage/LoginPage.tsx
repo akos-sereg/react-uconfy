@@ -1,15 +1,20 @@
-import * as React from 'react';
-import { Component, useEffect, useState } from 'react';
+import * as React from 'react'
+import { Component, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Helmet } from 'react-helmet';
-import TextInput from '../../components/TextInput';
-import { setNavigation } from '../../components/Navigation/actions';
-import { login } from './actions';
-import styles from './style.scss';
+import { Helmet } from 'react-helmet'
+import TextInput from '../../components/TextInput'
+import UconfyBackendApi from '../../services/UconfyBackendApi'
+import { setNavigation } from '../../components/Navigation/actions'
+import { login } from './actions'
+import styles from './style.scss'
 
 type Props = {
+  // dispatch to props
   updateNavigation: Function,
-  dispatch: Function
+  dispatch: Function,
+
+  // state to props
+  isProcessing: boolean
 };
 
 type State = {
@@ -18,33 +23,30 @@ type State = {
 
 const LoginPage = (props: Props) => {
 
-  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
-  /*props.dispatch(setNavigation([
-            { name: 'uConfy', uri: '/#/' },
-            { name: 'Login' },
-          ]));*/
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' })
+  const { isProcessing } = props
 
   const handleSignIn = (event: any) => {
-    event.preventDefault();
-    console.log('Sign in clicked');
-    props.dispatch(login(loginForm.username, loginForm.password));
+    event.preventDefault()
+    console.log('Sign in clicked')
+    props.dispatch(login(loginForm.username, loginForm.password))
   }
 
   const handlePasswordKeyUp = (event: any) => {
-    event.preventDefault();
+    event.preventDefault()
     if (event.key === 'Enter') {
-      handleSignIn(event);
+      handleSignIn(event)
     }
   }
 
   const handleTextChange = (event: any) => {
     switch (event.target.name) {
       case 'username':
-        setLoginForm({ ...loginForm, username: event.target.value });
+        setLoginForm({ ...loginForm, username: event.target.value })
         break;
       case 'password':
-        setLoginForm({ ...loginForm, password: event.target.value });
-        break;
+        setLoginForm({ ...loginForm, password: event.target.value })
+        break
     }
   }
 
@@ -66,7 +68,7 @@ const LoginPage = (props: Props) => {
             </td>
             <td>
               <div className="input-group">
-                <TextInput name={'username'} onChange={handleTextChange} />
+                <TextInput disabled={isProcessing} name={'username'} onChange={handleTextChange} />
               </div>
             </td>
           </tr>
@@ -77,6 +79,7 @@ const LoginPage = (props: Props) => {
             <td>
               <div className="input-group">
                 <TextInput
+                  disabled={isProcessing}
                   name={'password'}
                   type={"password"}
                   onChange={handleTextChange}
@@ -90,6 +93,7 @@ const LoginPage = (props: Props) => {
             </td>
             <td>
               <button
+                disabled={isProcessing}
                 onClick={(e) => handleSignIn(e)}
                 type="button"
                 className="btn btn-default navbar-btn">
@@ -103,4 +107,4 @@ const LoginPage = (props: Props) => {
   );
 }
 
-export default LoginPage;
+export default LoginPage

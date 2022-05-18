@@ -9,10 +9,11 @@ type Props = {
   placeholder?: string,
   value?: string,
   error?: any,
-  type?: string
+  type?: string,
+  disabled?: boolean
 };
 
-const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, error }) => {
+const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, disabled, error }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += ' has-error';
@@ -25,6 +26,7 @@ const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholde
       {label != null && (<label htmlFor={name}>{label}</label>)}
       <div className="field">
         <input
+          disabled={disabled}
           type={type ? type : 'text'}
           name={name}
           className="form-control"
