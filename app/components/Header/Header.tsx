@@ -7,7 +7,7 @@ import styles from './style.scss'
 const Header = () => {
 
   const handleLogout = () => {
-    UconfyBackendApi.jwtToken = null
+    UconfyBackendApi.setJwtToken(null)
     location.href = '/#/'
   }
 

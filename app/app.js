@@ -16,6 +16,7 @@ import { HashRouter } from 'react-router-dom';
 import FontFaceObserver from 'fontfaceobserver';
 import { setNavigation } from 'components/Navigation/actions';
 import createHistory from 'history/createBrowserHistory';
+import UconfyBackendApi from 'services/UconfyBackendApi'
 import 'sanitize.css/sanitize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -92,4 +93,10 @@ if (module.hot) {
 }
 
 render();
+
+// autologin, if jwt token is available
+if (UconfyBackendApi.getJwtToken()) {
+  location.href = '/#/devices'
+}
+
 updateLocation();

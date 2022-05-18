@@ -1,5 +1,5 @@
-import UconfyBackendApi from './UconfyBackendApi';
-import axios from 'axios';
+import UconfyBackendApi from './UconfyBackendApi'
+import axios from 'axios'
 
 class UconfyLoginApi extends UconfyBackendApi {
 
@@ -9,7 +9,7 @@ class UconfyLoginApi extends UconfyBackendApi {
         { username, password },
         { timeout: this.requestTimeout });
 
-      UconfyBackendApi.jwtToken = response.data.token;
+      UconfyBackendApi.setJwtToken(response.data.token)
 
       return {
         success: true,
@@ -17,9 +17,9 @@ class UconfyLoginApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
-      return { success: false };
+      return { success: false }
     }
   }
 }
 
-export default new UconfyLoginApi();
+export default new UconfyLoginApi()
