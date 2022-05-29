@@ -10,7 +10,6 @@ import styles from './style.scss'
 
 type Props = {
   // dispatch to props
-  updateNavigation: Function,
   dispatch: Function,
 
   // state to props
@@ -28,7 +27,6 @@ const LoginPage = (props: Props) => {
 
   const handleSignIn = (event: any) => {
     event.preventDefault()
-    console.log('Sign in clicked')
     props.dispatch(login(loginForm.username, loginForm.password))
   }
 

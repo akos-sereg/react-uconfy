@@ -49,3 +49,8 @@ $ npm run test
 ``` 
 
 It generates a coverage report as well. You can set coverage expectations in ``config/jest.config.js``
+
+
+## Todo
+
+- Upgrade react-redux from 5 to 7

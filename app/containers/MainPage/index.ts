@@ -11,13 +11,6 @@ import { setNavigation } from '../../components/Navigation/actions';
 
 const mapDispatchToProps = (dispatch: any) => ({
   dispatch: dispatch,
-  updateNavigation: () => {
-    dispatch(setNavigation(
-      [
-        { name: 'uConfy', uri: '/#/' },
-        { name: 'Login' },
-      ]));
-  },
 });
 
 const mapStateToProps = createStructuredSelector({

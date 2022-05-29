@@ -1,8 +1,6 @@
-import {
-  SET_NAVIGATION_ITEMS,
-} from './constants';
-
 import { NavigationPathItem } from './model';
+
+export const SET_NAVIGATION_ITEMS = 'set_navigation_items';
 
 export function setNavigation(pathItems: Array<NavigationPathItem>) {
   return {

@@ -4,7 +4,7 @@ import { NavigationPathItem } from './model';
 
 import {
   SET_NAVIGATION_ITEMS,
-} from './constants';
+} from './actions';
 
 const initialState = fromJS({
   navigationPath: [],

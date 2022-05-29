@@ -1,31 +1,29 @@
-import * as React from 'react';
-import { Component } from 'react';
-import { Link } from 'react-router-dom';
-import AuthorList from '../../components/AuthorList';
-import { Author } from '../../model/Author';
-import styles from './style.scss';
+import * as React from 'react'
+import { useEffect, useState } from 'react'
+import { Component } from 'react'
+import { Link } from 'react-router-dom'
+import AuthorList from '../../components/AuthorList'
+import { Author } from '../../model/Author'
+import DeviceList from '../../components/DeviceList'
+import UconfyDevicesApi from '../../services/UconfyDevicesApi'
+import styles from './style.scss'
+import * as toastr from 'toastr'
 
 type Props = {
-  authors: Author[],
-  onFetchAuthors: Function,
-  onDeleteAuthor: Function,
-  updateNavigation: Function
+  dispatch: any,
+  fetchDevices: Function,
+  devicesData: any
 };
 
-class DeviceListPage extends Component<Props> {
 
-  componentDidMount() {
-    // this.props.updateNavigation();
-  }
+const DeviceListPage = (props: Props) => {
 
-  render() {
-
-    return (
-      <div>
-        <h1>Devices</h1>
-      </div>
+  return (
+      <>
+        {props.devicesData && <DeviceList items={props.devicesData.devices} />}
+      </>
     );
-  }
+
 }
 
 export default DeviceListPage;

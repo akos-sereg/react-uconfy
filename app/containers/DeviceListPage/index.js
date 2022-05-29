@@ -1,25 +1,33 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
+import { createStructuredSelector, createSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import saga from './saga';
 import reducer from './reducer';
 import DeviceListPage from './DeviceListPage';
-import { fetchAuthors, deleteAuthor } from './actions';
+import { fetchDevices } from './actions';
 import { setNavigation } from '../../components/Navigation/actions';
 
 const mapDispatchToProps = (dispatch) => ({
-  updateNavigation: () => {
-    dispatch(setNavigation(
-      [
-        { name: 'uConfy', uri: '/#/' },
-        { name: 'Devices' },
-      ]));
-  },
+  dispatch,
+  /*fetchDevices: () => {
+    dispatch(fetchDevices());
+  },*/
 });
 
+// ---------------------------------------------------------------
+// State handling
+// ---------------------------------------------------------------
+const selectGlobal = (state) => state.get('deviceList');
+
+const devicesDataSelector = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.devicesData
+);
+
 const mapStateToProps = createStructuredSelector({
+  devicesData: devicesDataSelector()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

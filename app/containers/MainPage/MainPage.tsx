@@ -7,7 +7,6 @@ import { setNavigation } from '../../components/Navigation/actions';
 import styles from './style.scss';
 
 type Props = {
-  updateNavigation: Function,
   dispatch: Function
 };
 
@@ -18,14 +17,9 @@ type State = {
 const MainPage = (props: Props) => {
 
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
-  /*props.dispatch(setNavigation([
-            { name: 'uConfy', uri: '/#/' },
-            { name: 'Login' },
-          ]));*/
 
   const handleSignIn = (event: any) => {
     event.preventDefault();
-    console.log('Sign in clicked');
   }
 
   const handlePasswordKeyUp = (event: any) => {

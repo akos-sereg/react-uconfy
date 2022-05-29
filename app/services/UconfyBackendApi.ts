@@ -9,6 +9,12 @@ class UconfyBackendApi {
     return jwt === 'null' ? null : jwt
   }
 
+  static getHeaders() {
+    return {
+      'Authorization': UconfyBackendApi.getJwtToken()
+    }
+  }
+
   endpointUrl = 'http://127.0.0.1:8080/api'
   requestTimeout = 5000
 }
