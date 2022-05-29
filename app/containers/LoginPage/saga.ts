@@ -18,7 +18,7 @@ export function* doLogin(loginAction: any): any {
           result.userID))
 
       toastr['success']('Successfully logged in')
-      location.href = '/#/devices'
+      location.href = '/#/device'
     } else {
       toastr['warning']('Login failed')
     }

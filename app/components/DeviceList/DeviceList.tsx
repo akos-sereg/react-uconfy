@@ -3,7 +3,8 @@ import DeviceItem from '../DeviceItem'
 import styles from './style.scss'
 
 type Props = {
-  items: Array<any>
+  items: Array<any>,
+  dispatch: Function
 }
 
 const DeviceList = (props: Props) => {
@@ -14,7 +15,9 @@ const DeviceList = (props: Props) => {
         key={item.deviceID}
         deviceId={item.deviceID}
         platform={item.platform}
-        name={item.name} />)
+        name={item.name}
+        dispatch={props.dispatch}
+      />)
     }
   </div>
 

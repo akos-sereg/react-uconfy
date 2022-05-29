@@ -1,19 +1,20 @@
-import * as React from 'react';
-import { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import * as React from 'react'
+import { useEffect } from 'react'
+import { Helmet } from 'react-helmet'
+import { Switch, Route, useLocation } from 'react-router-dom'
 
-import AboutPage from 'containers/AboutPage/Loadable';
-import AuthorsPage from 'containers/AuthorsPage/index';
-import ManageAuthorPage from 'containers/ManageAuthorPage/index';
-import MainPage from 'containers/MainPage/Loadable';
-import LoginPage from 'containers/LoginPage/index';
-import DeviceListPage from 'containers/DeviceListPage';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
-import Navigation from 'components/Navigation';
-import Footer from 'components/Footer';
-import styles from './style.scss';
+import AboutPage from 'containers/AboutPage/Loadable'
+import AuthorsPage from 'containers/AuthorsPage/index'
+import ManageAuthorPage from 'containers/ManageAuthorPage/index'
+import MainPage from 'containers/MainPage/Loadable'
+import LoginPage from 'containers/LoginPage/index'
+import DeviceListPage from 'containers/DeviceListPage'
+import DevicePage from 'containers/DevicePage'
+import NotFoundPage from 'containers/NotFoundPage/Loadable'
+import Header from 'components/Header'
+import Navigation from 'components/Navigation'
+import Footer from 'components/Footer'
+import styles from './style.scss'
 
 const App = () => {
 
@@ -31,7 +32,8 @@ const App = () => {
            <Route exact path="/login" component={LoginPage} />
            <Route path="/app" component={MainPage} />
            <Route path="/login" component={MainPage} />
-           <Route path="/devices" component={DeviceListPage} />
+           <Route exact path="/device" component={DeviceListPage} />
+           <Route path="/device/:id" component={DevicePage} />
            <Route path="/about" component={AboutPage} />
            <Route path="/authors" component={AuthorsPage} />
            <Route path="/author/:id" component={ManageAuthorPage} />

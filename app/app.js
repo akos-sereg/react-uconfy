@@ -50,7 +50,6 @@ const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 const updateLocation = () => {
-  console.log('Update location: ' + document.location.hash);
   switch (document.location.hash) {
     case '#/':
       store.dispatch(setNavigation([
@@ -58,8 +57,8 @@ const updateLocation = () => {
            { name: 'Login' },
          ]));
       break;
-    case '#/devices':
-      console.log('dispatching /#/devices')
+
+    case '#/device':
       store.dispatch(setNavigation([
            { name: 'uConfy', uri: '/#/' },
            { name: 'Devices' },
@@ -98,7 +97,7 @@ render();
 
 // autologin, if jwt token is available
 if (UconfyBackendApi.getJwtToken()) {
-  location.href = '/#/devices'
+  location.href = '/#/device'
 } else {
   updateLocation();
 }

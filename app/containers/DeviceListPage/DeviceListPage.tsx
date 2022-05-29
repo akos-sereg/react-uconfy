@@ -20,7 +20,10 @@ const DeviceListPage = (props: Props) => {
 
   return (
       <>
-        {props.devicesData && <DeviceList items={props.devicesData.devices} />}
+        {props.devicesData && <DeviceList
+          items={props.devicesData.devices}
+          dispatch={props.dispatch}
+          />}
       </>
     );
 
