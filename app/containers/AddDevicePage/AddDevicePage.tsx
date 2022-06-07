@@ -7,6 +7,7 @@ import { Author } from '../../model/Author'
 import DeviceList from '../../components/DeviceList'
 import AddDeviceItem from '../../components/DeviceItem/AddDeviceItem'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi'
+import { getDeviceListUri } from '../../services/UrlService'
 import { createDevice } from './actions'
 import styles from './style.scss'
 import * as toastr from 'toastr'
@@ -27,6 +28,11 @@ const AddDevicePage = (props: Props) => {
     props.dispatch(createDevice(nameEl.current.value, platformEl.current.value))
   }
 
+  const handleCancel = (event: any) => {
+    event.preventDefault()
+    document.location.href = getDeviceListUri()
+  }
+
   return (
       <div className={styles.createDeviceContainer}>
 
@@ -45,7 +51,8 @@ const AddDevicePage = (props: Props) => {
           <input type="text" ref={platformEl} className={`form-control ${styles.fieldValue}`} placeholder="Platform" aria-describedby="platform" />
         </div>
 
-        <button disabled={isCreating} type="button" className="btn btn-primary" onClick={handleCreate}>Create</button>
+        <button disabled={isCreating} type="button" className={`btn btn-primary ${styles.actionButton}`} onClick={handleCreate}>Create</button>
+        <button type="button" className={`btn btn-default ${styles.actionButton}`} onClick={handleCancel}>Cancel</button>
       </div>
     );
 }

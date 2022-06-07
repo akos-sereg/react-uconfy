@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import AuthorApi from '../../services/AuthorApi';
 import { NavigationPathItem } from './model';
 
 import {

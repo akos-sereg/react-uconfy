@@ -1,7 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects'
 import { getDeviceListUri } from '../../services/UrlService'
 import { LOGIN_REQUEST_SENT, loginResponseReceived, loginSuccess } from './actions'
-import AuthorApi from '../../services/AuthorApi'
 import UconfyLoginApi from '../../services/UconfyLoginApi'
 import * as toastr from 'toastr'
 

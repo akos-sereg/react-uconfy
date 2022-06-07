@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import AuthorApi from '../../services/AuthorApi';
 import {
   LOGIN_REQUEST_SENT,
   LOGIN_RESPONSE_RECEIVED
