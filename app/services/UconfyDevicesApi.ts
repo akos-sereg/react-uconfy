@@ -38,6 +38,24 @@ class UconfyDevicesApi extends UconfyBackendApi {
       return { success: false }
     }
   }
+
+  async deleteDevice(deviceId: string) {
+    try {
+      const response = await axios.delete(`${this.endpointUrl}/device/${deviceId}`,
+        {
+          headers: UconfyBackendApi.getHeaders(),
+          timeout: this.requestTimeout
+        });
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      return { success: false }
+    }
+  }
 }
 
 export default new UconfyDevicesApi()
