@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { getCreateDeviceUri } from '../../services/UrlService'
 import { setNavigation } from '../Navigation/actions'
 import { fetchDeviceDetails } from '../../containers/DevicePage/actions'
 import styles from './style.scss'
@@ -9,7 +10,12 @@ type Props = {
 
 const AddDeviceItem = (props: Props) => {
 
-  return <div className={`${styles.deviceItemContainer} ${styles.addDeviceItemContainer}`}>
+  const handleClick = () => {
+    document.location.href = getCreateDeviceUri()
+  }
+
+  return <div className={`${styles.deviceItemContainer} ${styles.addDeviceItemContainer}`}
+    onClick={handleClick}>
      Add new
   </div>
 }

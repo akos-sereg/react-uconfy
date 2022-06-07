@@ -1,8 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects'
-import * as toastr from 'toastr'
+import { getDeviceListUri } from '../../services/UrlService'
 import { LOGIN_REQUEST_SENT, loginResponseReceived, loginSuccess } from './actions'
 import AuthorApi from '../../services/AuthorApi'
 import UconfyLoginApi from '../../services/UconfyLoginApi'
+import * as toastr from 'toastr'
 
 export function* doLogin(loginAction: any): any {
 
@@ -17,8 +18,8 @@ export function* doLogin(loginAction: any): any {
           result.token,
           result.userID))
 
-      toastr['success']('Successfully logged in')
-      location.href = '/#/device'
+      // toastr['success']('Successfully logged in')
+      location.href = getDeviceListUri()
     } else {
       toastr['warning']('Login failed')
     }

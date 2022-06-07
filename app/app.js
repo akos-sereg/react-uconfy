@@ -58,6 +58,14 @@ const updateLocation = () => {
          ]));
       break;
 
+    case '#/device/create':
+      store.dispatch(setNavigation([
+           { name: 'uConfy', uri: '/#/' },
+           { name: 'Devices', uri: '/#/device' },
+           { name: 'Create Device' },
+         ]));
+      break;
+
     case '#/device':
       store.dispatch(setNavigation([
            { name: 'uConfy', uri: '/#/' },

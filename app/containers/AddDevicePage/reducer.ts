@@ -1,12 +1,12 @@
 import { fromJS } from 'immutable';
 import AuthorApi from '../../services/AuthorApi';
-import { FETCH_DEVICE } from './actions'
+import { CREATE_DEVICE } from './actions'
 
 const initialState = fromJS({
   error: false,
 });
 
-function devicePageReducer(state = initialState, action: any) {
+function addDevicePageReducer(state = initialState, action: any) {
   switch (action.type) {
 
     default:
@@ -14,4 +14,4 @@ function devicePageReducer(state = initialState, action: any) {
   }
 }
 
-export default devicePageReducer;
+export default addDevicePageReducer;

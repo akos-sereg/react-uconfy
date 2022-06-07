@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
+import { getDeviceUri } from '../../services/UrlService'
 import { setNavigation } from '../Navigation/actions'
 import { fetchDeviceDetails } from '../../containers/DevicePage/actions'
 import styles from './style.scss'
@@ -13,7 +14,7 @@ type Props = {
 
 const DeviceItem = (props: Props) => {
   const handleClick = () => {
-    document.location.href = `/#/device/${props.deviceId}`
+    document.location.href = getDeviceUri(props.deviceId)
 
     // todo: upgrade react-redux and use useDispatch
     props.dispatch(setNavigation([

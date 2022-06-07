@@ -8,6 +8,7 @@ import MainPage from 'containers/MainPage/Loadable'
 import LoginPage from 'containers/LoginPage/index'
 import DeviceListPage from 'containers/DeviceListPage'
 import DevicePage from 'containers/DevicePage'
+import AddDevicePage from 'containers/AddDevicePage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Header from 'components/Header'
 import Navigation from 'components/Navigation'
@@ -32,6 +33,7 @@ const App = () => {
            <Route path="/login" component={MainPage} />
            <Route exact path="/device" component={DeviceListPage} />
            <Route path="/device/:id" component={DevicePage} />
+           <Route path="/device/create" component={AddDevicePage} />
            <Route path="/about" component={AboutPage} />
            <Route path="" component={NotFoundPage} />
          </Switch>
