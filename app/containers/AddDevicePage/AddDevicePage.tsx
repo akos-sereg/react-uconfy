@@ -7,13 +7,12 @@ import { Author } from '../../model/Author'
 import DeviceList from '../../components/DeviceList'
 import AddDeviceItem from '../../components/DeviceItem/AddDeviceItem'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi'
+import { createDevice } from './actions'
 import styles from './style.scss'
 import * as toastr from 'toastr'
 
 type Props = {
   dispatch: any,
-  fetchDevices: Function,
-  devicesData: any
 };
 
 const AddDevicePage = (props: Props) => {
@@ -22,8 +21,7 @@ const AddDevicePage = (props: Props) => {
 
   const handleCreate = (event: any) => {
     event.preventDefault()
-    const name = nameEl.current.value
-    const platform = platformEl.current.value
+    props.dispatch(createDevice(nameEl.current.value, platformEl.current.value))
   }
 
   return (

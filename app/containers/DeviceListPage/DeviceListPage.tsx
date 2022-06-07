@@ -20,6 +20,11 @@ const DeviceListPage = (props: Props) => {
 
   return (
       <>
+        <h2>List of Device</h2>
+        <p>
+          Registered devices can be found below.
+        </p>
+
         {props.devicesData && <DeviceList
           items={props.devicesData.devices}
           dispatch={props.dispatch}
