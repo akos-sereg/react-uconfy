@@ -54,3 +54,4 @@ It generates a coverage report as well. You can set coverage expectations in ``c
 ## Todo
 
 - Upgrade react-redux from 5 to 7
+- Standalone (eg. without locally running API)

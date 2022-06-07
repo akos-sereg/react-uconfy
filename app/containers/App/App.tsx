@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet'
 import { Switch, Route, useLocation } from 'react-router-dom'
 
 import AboutPage from 'containers/AboutPage/Loadable'
-import AuthorsPage from 'containers/AuthorsPage/index'
-import ManageAuthorPage from 'containers/ManageAuthorPage/index'
 import MainPage from 'containers/MainPage/Loadable'
 import LoginPage from 'containers/LoginPage/index'
 import DeviceListPage from 'containers/DeviceListPage'
@@ -35,9 +33,6 @@ const App = () => {
            <Route exact path="/device" component={DeviceListPage} />
            <Route path="/device/:id" component={DevicePage} />
            <Route path="/about" component={AboutPage} />
-           <Route path="/authors" component={AuthorsPage} />
-           <Route path="/author/:id" component={ManageAuthorPage} />
-           <Route path="/author" component={ManageAuthorPage} />
            <Route path="" component={NotFoundPage} />
          </Switch>
        </div>

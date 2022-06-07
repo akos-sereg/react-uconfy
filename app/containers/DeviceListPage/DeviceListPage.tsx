@@ -16,7 +16,6 @@ type Props = {
   devicesData: any
 };
 
-
 const DeviceListPage = (props: Props) => {
 
   return (
@@ -29,7 +28,6 @@ const DeviceListPage = (props: Props) => {
         <AddDeviceItem dispatch={props.dispatch} />
       </>
     );
-
 }
 
 export default DeviceListPage;
