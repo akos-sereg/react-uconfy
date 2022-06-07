@@ -20,12 +20,7 @@ const AddDevicePage = (props: Props) => {
 
   return (
       <>
-        {props.devicesData && <DeviceList
-          items={props.devicesData.devices}
-          dispatch={props.dispatch}
-          />}
-
-        <AddDeviceItem dispatch={props.dispatch} />
+        ehlo
       </>
     );
 }
