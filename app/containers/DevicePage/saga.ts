@@ -1,17 +1,19 @@
-import { put, takeEvery } from 'redux-saga/effects';
-import { SET_NAVIGATION_ITEMS } from '../../components/Navigation/actions';
+import { put, takeLatest } from 'redux-saga/effects';
+import { FETCH_DEVICE } from './actions';
 import {
   // devicesReceived
 } from './actions'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi';
 import * as toastr from 'toastr'
 
-export function *onNavigationUpdated(action: any): any {
-
+export function *fetchDeviceDetails(action: any): any {
+  console.log('fetch device details')
+  console.log(action)
+  yield
 }
 
 export default function* rootSaga() {
   yield [
-    takeEvery(SET_NAVIGATION_ITEMS, onNavigationUpdated),
+    takeLatest(FETCH_DEVICE, fetchDeviceDetails),
   ];
 }

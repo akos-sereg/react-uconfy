@@ -1,4 +1,4 @@
-export const FETCH_DEVICES_RESPONSE_RECEIVED = 'react-uconfy/DevicesPage/FetchDevicesResponse'
+export const FETCH_DEVICES_RESPONSE_RECEIVED = 'react-uconfy/DeviceListPage/FetchDevicesResponse'
 
 export function devicesReceived(devices: any) {
   return {

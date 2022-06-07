@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import AuthorList from '../../components/AuthorList'
 import { Author } from '../../model/Author'
 import DeviceList from '../../components/DeviceList'
+import AddDeviceItem from '../../components/DeviceItem/AddDeviceItem'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi'
 import styles from './style.scss'
 import * as toastr from 'toastr'
@@ -24,6 +25,8 @@ const DeviceListPage = (props: Props) => {
           items={props.devicesData.devices}
           dispatch={props.dispatch}
           />}
+
+        <AddDeviceItem dispatch={props.dispatch} />
       </>
     );
 

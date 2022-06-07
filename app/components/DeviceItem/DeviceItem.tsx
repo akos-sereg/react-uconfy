@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { setNavigation } from '../Navigation/actions'
+import { fetchDeviceDetails } from '../../containers/DevicePage/actions'
 import styles from './style.scss'
 
 type Props = {
-  deviceId: number,
+  deviceId: string,
   name: string,
   platform: string,
   dispatch: Function
@@ -19,7 +20,7 @@ const DeviceItem = (props: Props) => {
        { name: 'uConfy', uri: '/#/' },
        { name: 'Devices', uri: '/#/device' },
        { name: props.name },
-     ]));
+     ]))
   }
 
   return <div className={styles.deviceItemContainer} onClick={handleClick}>
