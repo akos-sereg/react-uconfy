@@ -19,8 +19,11 @@ const AddDevicePage = (props: Props) => {
   const nameEl = useRef(null);
   const platformEl = useRef(null);
 
+  const [ isCreating, setCreating ] = useState(false)
+
   const handleCreate = (event: any) => {
     event.preventDefault()
+    setCreating(true)
     props.dispatch(createDevice(nameEl.current.value, platformEl.current.value))
   }
 
@@ -42,7 +45,7 @@ const AddDevicePage = (props: Props) => {
           <input type="text" ref={platformEl} className={`form-control ${styles.fieldValue}`} placeholder="Platform" aria-describedby="platform" />
         </div>
 
-        <button type="button" className="btn btn-primary" onClick={handleCreate}>Create</button>
+        <button disabled={isCreating} type="button" className="btn btn-primary" onClick={handleCreate}>Create</button>
       </div>
     );
 }

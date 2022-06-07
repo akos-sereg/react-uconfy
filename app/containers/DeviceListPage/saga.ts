@@ -8,10 +8,7 @@ import * as toastr from 'toastr'
 
 export function *onNavigationUpdated(action: any): any {
 
-  console.log('navigation updated: ', action)
-
   if (action.payload.pathItems[action.payload.pathItems.length - 1].name !== 'Devices') {
-    console.log('returning.')
     return;
   }
 
