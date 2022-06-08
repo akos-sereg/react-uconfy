@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { getCreateDeviceUri } from '../../services/UrlService'
-import { setNavigation } from '../Navigation/actions'
-import { fetchDeviceDetails } from '../../containers/DevicePage/actions'
+import { getCreateDeviceUri } from '../../../../services/UrlService'
 import styles from './style.scss'
 
 type Props = {

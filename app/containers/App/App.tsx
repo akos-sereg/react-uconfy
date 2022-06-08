@@ -3,12 +3,11 @@ import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { Switch, Route, useLocation } from 'react-router-dom'
 
-import AboutPage from 'containers/AboutPage/Loadable'
 import LoginPage from 'containers/LoginPage/index'
 import DeviceListPage from 'containers/DeviceListPage'
 import DevicePage from 'containers/DevicePage'
 import AddDevicePage from 'containers/AddDevicePage'
-import NotFoundPage from 'containers/NotFoundPage/Loadable'
+import NotFoundPage from 'containers/NotFoundPage'
 import Header from 'components/Header'
 import Navigation from 'components/Navigation'
 import Footer from 'components/Footer'
@@ -31,12 +30,9 @@ const App = () => {
            <Route exact path="/device/create" component={AddDevicePage} />
            <Route exact path="/device" component={DeviceListPage} />
            <Route path="/device/:id" component={DevicePage} />
-           <Route path="/about" component={AboutPage} />
            <Route path="" component={NotFoundPage} />
          </Switch>
        </div>
-
-       <Footer />
      </div>
    );
 }
