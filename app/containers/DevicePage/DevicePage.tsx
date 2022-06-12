@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TabSelector from './components/TabSelector'
+import TextInput from '../../components/TextInput'
 import { Subpage } from '../../model/DevicePage'
-import { deleteDevice } from './actions'
+import { deleteDevice, fetchDeviceDetails } from './actions'
+import styles from './style.scss'
 
 type Props = {
   dispatch: any,
@@ -13,9 +15,9 @@ const DevicePage = (props: Props) => {
 
   const [ subpage, setSubpage ] = useState(Subpage.Access)
   const [ isDeleting, setDeleting ] = useState(false)
+  const deviceId = props.match.params.id
 
   const handleDelete = () => {
-    const deviceId = props.match.params.id
     setDeleting(true)
     props.dispatch(deleteDevice(deviceId))
   }
@@ -23,6 +25,10 @@ const DevicePage = (props: Props) => {
   const handleTabChanged = (currentTab: Subpage) => {
     setSubpage(currentTab)
   }
+
+  useEffect(() => {
+    props.dispatch(fetchDeviceDetails(deviceId))
+  })
 
   return (
       <>
@@ -33,6 +39,13 @@ const DevicePage = (props: Props) => {
 
         {/* Access --------------------------------------------------------------------------------*/}
         {subpage == Subpage.Access && (<>
+          <div className={styles.fieldContainer}>
+            <div className={styles.fieldName}>DeviceID</div>
+            <div className={styles.fieldValue}>
+              <TextInput disabled={true} name={'username'} value={deviceId} onChange={() => {}} />
+            </div>
+            <div className={styles.clear}>&nbsp;</div>
+          </div>
           <button disabled={isDeleting} type="button" className="btn btn-default" onClick={handleDelete}>Delete</button>
         </>)}
 

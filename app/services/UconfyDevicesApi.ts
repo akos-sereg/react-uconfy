@@ -56,6 +56,24 @@ class UconfyDevicesApi extends UconfyBackendApi {
       return { success: false }
     }
   }
+
+  async getDevice(deviceId: string) {
+    try {
+      const response = await axios.get(`${this.endpointUrl}/device/${deviceId}/config`,
+        {
+          headers: UconfyBackendApi.getHeaders(),
+          timeout: this.requestTimeout
+        });
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      return { success: false }
+    }
+  }
 }
 
 export default new UconfyDevicesApi()

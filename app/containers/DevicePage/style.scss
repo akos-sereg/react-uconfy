@@ -1,0 +1,19 @@
+.fieldName {
+  float: left;
+  min-width: 220px;
+  padding: 20px;
+}
+
+.fieldValue {
+  float: left;
+  min-width: 350px;
+  padding: 20px;
+}
+
+.fieldContainer {
+  display: flex;
+}
+
+.clear {
+  clear: both;
+}

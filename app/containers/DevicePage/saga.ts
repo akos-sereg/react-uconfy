@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import { FETCH_DEVICE, DELETE_DEVICE } from './actions';
 import { getDeviceListUri } from '../../services/UrlService'
 import { devicesReceived } from '../../containers/DeviceListPage/actions'
@@ -8,9 +8,10 @@ import { DB_PROPAGATION_SECONDS } from '../../utils/constants'
 import * as toastr from 'toastr'
 
 export function *fetchDeviceDetails(action: any): any {
-  console.log('fetch device details')
-  console.log(action)
-  yield
+  const deviceDetailsResponse = yield UconfyDevicesApi.getDevice(action.payload)
+  if (deviceDetailsResponse.success) {
+    console.log(deviceDetailsResponse)
+  }
 }
 
 export function *deleteDevice(action: any): any {
@@ -33,7 +34,7 @@ export function *deleteDevice(action: any): any {
 
 export default function* rootSaga() {
   yield [
-    takeLatest(FETCH_DEVICE, fetchDeviceDetails),
-    takeLatest(DELETE_DEVICE, deleteDevice),
+    takeEvery(FETCH_DEVICE, fetchDeviceDetails),
+    takeEvery(DELETE_DEVICE, deleteDevice),
   ];
 }
