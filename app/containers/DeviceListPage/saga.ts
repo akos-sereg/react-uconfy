@@ -12,7 +12,7 @@ export function *onNavigationUpdated(action: any): any {
     return;
   }
 
-  const result = yield UconfyDevicesApi.getDevices()
+  const result = yield UconfyDevicesApi.instance.getDevices()
   if (!result.success) {
     toastr['warning']('Server error, please try again')
     return

@@ -7,7 +7,7 @@ import * as toastr from 'toastr'
 export function* doLogin(loginAction: any): any {
 
   try {
-    const result = yield UconfyLoginApi.login(loginAction.payload.username, loginAction.payload.password);
+    const result = yield UconfyLoginApi.instance.login(loginAction.payload.username, loginAction.payload.password);
 
     if (result.success) {
       yield put(loginSuccess(

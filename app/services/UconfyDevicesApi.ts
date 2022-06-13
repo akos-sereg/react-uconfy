@@ -3,6 +3,8 @@ import axios from 'axios'
 
 class UconfyDevicesApi extends UconfyBackendApi {
 
+  static instance = new UconfyDevicesApi()
+
   async getDevices() {
     try {
       const response = await axios.get(`${this.endpointUrl}/device`,
@@ -76,4 +78,4 @@ class UconfyDevicesApi extends UconfyBackendApi {
   }
 }
 
-export default new UconfyDevicesApi()
+export default UconfyDevicesApi

@@ -11,11 +11,11 @@ import UconfyDevicesApi from '../../services/UconfyDevicesApi';
 import * as toastr from 'toastr'
 
 export function *createDevice(action: any): any {
-  const result = yield UconfyDevicesApi.createDevice(action.payload.name, action.payload.platform)
+  const result = yield UconfyDevicesApi.instance.createDevice(action.payload.name, action.payload.platform)
   if (result.success) {
     yield sleep(DB_PROPAGATION_SECONDS)
 
-    const devicesResult = yield UconfyDevicesApi.getDevices()
+    const devicesResult = yield UconfyDevicesApi.instance.getDevices()
     if (!devicesResult.success) {
       toastr['warning']('Server error, please try again')
       return
