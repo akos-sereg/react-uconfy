@@ -28,9 +28,9 @@ class UconfyLoginApi extends UconfyBackendApi {
 
   async login(username: string, password: string) {
     try {
-      const response = await axios.post(`${this.endpointUrl}/login`,
+      const response = await axios.post(`${UconfyBackendApi.endpointUrl}/login`,
         { username, password },
-        { timeout: this.requestTimeout });
+        { timeout: UconfyBackendApi.requestTimeout });
 
       UconfyBackendApi.setJwtToken(response.data.token)
       UconfyLoginApi.setUserData(response.data)
@@ -47,9 +47,9 @@ class UconfyLoginApi extends UconfyBackendApi {
 
   async getMe() {
       try {
-        const response = await axios.post(`${this.endpointUrl}/login/jwt`,
+        const response = await axios.post(`${UconfyBackendApi.endpointUrl}/login/jwt`,
           { jwtToken: UconfyBackendApi.getJwtToken() },
-          { timeout: this.requestTimeout });
+          { timeout: UconfyBackendApi.requestTimeout });
 
         UconfyLoginApi.setUserData(response.data)
 

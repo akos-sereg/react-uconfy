@@ -1,19 +1,10 @@
-.fieldName {
-  float: left;
-  min-width: 220px;
-  padding: 20px;
-}
+.formTable {
+  width: 100%;
 
-.fieldValue {
-  float: left;
-  min-width: 350px;
-  padding: 20px;
-}
-
-.fieldContainer {
-  display: flex;
-}
-
-.clear {
-  clear: both;
+  tr {
+    td {
+      width: 50%;
+      padding: 10px;
+    }
+  }
 }

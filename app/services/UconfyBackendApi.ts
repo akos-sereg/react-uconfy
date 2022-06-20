@@ -15,8 +15,8 @@ class UconfyBackendApi {
     }
   }
 
-  endpointUrl = 'http://127.0.0.1:8080/api'
-  requestTimeout = 5000
+  static endpointUrl = 'http://127.0.0.1:8080/api'
+  static requestTimeout = 5000
 }
 
 export default UconfyBackendApi

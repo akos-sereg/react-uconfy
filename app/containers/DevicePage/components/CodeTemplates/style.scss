@@ -1,0 +1,28 @@
+
+.apiTemplateItems {
+  float: left;
+  padding-bottom: 10px;
+
+  span {
+    font-size: 24px;
+    font-weight: 500;
+    padding-right: 20px;
+    cursor: pointer;
+  }
+
+  span:hover {
+    color: #000000;
+  }
+}
+
+.apiTemplateContainer {
+  display: flex;
+}
+
+.active {
+  color: #000000;
+}
+
+.inactive {
+  color: #dddddd;
+}

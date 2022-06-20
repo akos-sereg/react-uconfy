@@ -7,7 +7,7 @@ class UconfyDevicesApi extends UconfyBackendApi {
 
   async getDevices() {
     try {
-      const response = await axios.get(`${this.endpointUrl}/device`,
+      const response = await axios.get(`${UconfyBackendApi.endpointUrl}/device`,
         {
           headers: UconfyBackendApi.getHeaders()
         });
@@ -24,11 +24,11 @@ class UconfyDevicesApi extends UconfyBackendApi {
 
   async createDevice(name: string, platform: string) {
     try {
-      const response = await axios.post(`${this.endpointUrl}/device`,
+      const response = await axios.post(`${UconfyBackendApi.endpointUrl}/device`,
         { name, platform },
         {
           headers: UconfyBackendApi.getHeaders(),
-          timeout: this.requestTimeout
+          timeout: UconfyBackendApi.requestTimeout
         });
 
       return {
@@ -43,10 +43,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
 
   async deleteDevice(deviceId: string) {
     try {
-      const response = await axios.delete(`${this.endpointUrl}/device/${deviceId}`,
+      const response = await axios.delete(`${UconfyBackendApi.endpointUrl}/device/${deviceId}`,
         {
           headers: UconfyBackendApi.getHeaders(),
-          timeout: this.requestTimeout
+          timeout: UconfyBackendApi.requestTimeout
         });
 
       return {
@@ -61,10 +61,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
 
   async getDevice(deviceId: string) {
     try {
-      const response = await axios.get(`${this.endpointUrl}/device/${deviceId}/config`,
+      const response = await axios.get(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config`,
         {
           headers: UconfyBackendApi.getHeaders(),
-          timeout: this.requestTimeout
+          timeout: UconfyBackendApi.requestTimeout
         });
 
       return {
