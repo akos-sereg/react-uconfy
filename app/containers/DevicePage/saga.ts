@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { FETCH_DEVICE, DELETE_DEVICE } from './actions';
+import { FETCH_DEVICE, FETCH_DEVICE_RESPONSE_RECEIVED, DELETE_DEVICE, fetchDeviceDetailsReceived } from './actions';
 import { getDeviceListUri } from '../../services/UrlService'
 import { devicesReceived } from '../../containers/DeviceListPage/actions'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi';
@@ -10,7 +10,7 @@ import * as toastr from 'toastr'
 export function *fetchDeviceDetails(action: any): any {
   const deviceDetailsResponse = yield UconfyDevicesApi.instance.getDevice(action.payload)
   if (deviceDetailsResponse.success) {
-    console.log(deviceDetailsResponse)
+    yield put(fetchDeviceDetailsReceived(action.payload, deviceDetailsResponse))
   }
 }
 

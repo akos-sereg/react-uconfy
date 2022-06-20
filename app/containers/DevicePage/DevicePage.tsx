@@ -9,7 +9,8 @@ import styles from './style.scss'
 
 type Props = {
   dispatch: any,
-  match: any
+  match: any,
+  devicesData: any
 };
 
 const DevicePage = (props: Props) => {
@@ -17,6 +18,8 @@ const DevicePage = (props: Props) => {
   const [ subpage, setSubpage ] = useState(Subpage.Access)
   const [ isDeleting, setDeleting ] = useState(false)
   const deviceId = props.match.params.id
+  const currentDevice = props.devicesData ? props.devicesData.devices.find((device: any) => device.deviceID === deviceId) : {}
+  console.log('--> current device', currentDevice)
 
   const handleDelete = () => {
     if (confirm('Are you sure you want to delete?')) {
@@ -43,7 +46,7 @@ const DevicePage = (props: Props) => {
         {/* Access --------------------------------------------------------------------------------*/}
         {subpage == Subpage.Access && (<>
 
-          <DeviceDetails match={props.match} />
+          <DeviceDetails match={props.match} device={currentDevice} />
 
           <CodeTemplates match={props.match} />
 

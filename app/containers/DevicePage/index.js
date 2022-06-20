@@ -15,10 +15,11 @@ const mapDispatchToProps = (dispatch) => ({
 // State handling
 // ---------------------------------------------------------------
 const selectGlobal = (state) => state.get('devicePage');
+const deviceListGlobal = (state) => state.get('deviceList');
 
 const devicesDataSelector = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.devicesData
+  deviceListGlobal,
+  (globalState) => globalState ? globalState.devicesData : null
 );
 
 const mapStateToProps = createStructuredSelector({
