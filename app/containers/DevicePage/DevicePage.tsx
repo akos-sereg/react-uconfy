@@ -8,7 +8,7 @@ import { deleteDevice, fetchDeviceDetails } from './actions'
 import styles from './style.scss'
 
 type Props = {
-  dispatch: any,
+  dispatch: Function,
   match: any,
   devicesData: any
 };
@@ -19,7 +19,6 @@ const DevicePage = (props: Props) => {
   const [ isDeleting, setDeleting ] = useState(false)
   const deviceId = props.match.params.id
   const currentDevice = props.devicesData ? props.devicesData.devices.find((device: any) => device.deviceID === deviceId) : {}
-  console.log('--> current device', currentDevice)
 
   const handleDelete = () => {
     if (confirm('Are you sure you want to delete?')) {
@@ -46,7 +45,7 @@ const DevicePage = (props: Props) => {
         {/* Access --------------------------------------------------------------------------------*/}
         {subpage == Subpage.Access && (<>
 
-          <DeviceDetails match={props.match} device={currentDevice} />
+          <DeviceDetails match={props.match} dispatch={props.dispatch} device={currentDevice} />
 
           <CodeTemplates match={props.match} />
 
