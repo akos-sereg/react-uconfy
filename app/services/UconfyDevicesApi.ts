@@ -23,22 +23,40 @@ class UconfyDevicesApi extends UconfyBackendApi {
   }
 
   async updateDevice(deviceId: string, name: string, platform: string) {
-      try {
-        const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}`,
-          { deviceId, name, platform },
-          {
-            headers: UconfyBackendApi.getHeaders()
-          });
+    try {
+      const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}`,
+        { deviceId, name, platform },
+        {
+          headers: UconfyBackendApi.getHeaders()
+        });
 
-        return {
-          success: true,
-          responseData: response.data,
-          responseStatus: response.status
-        };
-      } catch (error) {
-        return { success: false }
-      }
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      return { success: false }
     }
+  }
+
+  async updateConfig(deviceId: string, items: any) {
+    try {
+      const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config`,
+        { deviceId, items },
+        {
+          headers: UconfyBackendApi.getHeaders()
+        });
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      return { success: false }
+    }
+  }
 
   async createDevice(name: string, platform: string) {
     try {

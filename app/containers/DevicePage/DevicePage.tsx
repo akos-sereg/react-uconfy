@@ -39,11 +39,20 @@ const DevicePage = (props: Props) => {
         />
 
         {subpage == Subpage.Access && (<>
-          <AccessTab match={props.match} dispatch={props.dispatch} currentDevice={currentDevice} />
+          <AccessTab
+            match={props.match}
+            dispatch={props.dispatch}
+            currentDevice={currentDevice}
+          />
         </>)}
 
         {subpage == Subpage.Parameters && (<>
-          <ParametersTab match={props.match} dispatch={props.dispatch} deviceConfig={props.deviceConfig} />
+          <ParametersTab
+            match={props.match}
+            dispatch={props.dispatch}
+            deviceConfig={props.deviceConfig}
+            deviceId={deviceId}
+          />
         </>)}
 
       </>

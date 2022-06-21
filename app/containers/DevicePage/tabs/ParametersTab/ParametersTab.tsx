@@ -3,16 +3,40 @@ import styles from './style.scss'
 import CodeTemplates from "../../components/CodeTemplates";
 import DeviceDetails from "../../components/DeviceDetails";
 import {useState} from "react";
-import {deleteDevice} from "../../actions";
+import {deleteDevice, fetchDeviceDetails} from "../../actions";
 import TextInput from "../../../../components/TextInput";
+import UconfyDevicesApi from "../../../../services/UconfyDevicesApi";
 
 interface Props {
   match: any,
   dispatch: Function,
-  deviceConfig: any
+  deviceConfig: any,
+  deviceId: string
 }
 
 const ParametersTab = (props: Props) => {
+
+  const [newKey, setNewKey] = useState('')
+  const [newValue, setNewValue] = useState('')
+
+  const handleAdd = async () => {
+    if (newKey === '' || newValue === '') {
+      return
+    }
+
+    const newConfigItems = [...props.deviceConfig.items]
+    newConfigItems.push({key: newKey, value: newValue})
+    await UconfyDevicesApi.instance.updateConfig(props.deviceId, newConfigItems)
+    setNewKey('')
+    setNewValue('')
+    props.dispatch(fetchDeviceDetails(props.deviceId))
+  }
+
+  const handleDelete = async (key: string) => {
+    const newConfigItems = props.deviceConfig.items.filter((configItem: any) => configItem.key != key)
+    await UconfyDevicesApi.instance.updateConfig(props.deviceId, newConfigItems)
+    props.dispatch(fetchDeviceDetails(props.deviceId))
+  }
 
   return <>
     <h3>Parameters</h3>
@@ -35,19 +59,19 @@ const ParametersTab = (props: Props) => {
             <TextInput value={configItem.value} name={configItem.key} onChange={() => {}} />
           </td>
           <td>
-            <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => {}}>Delete</button>
+            <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleDelete(configItem.key)}>Delete</button>
           </td>
         </tr>
       ))}
       <tr>
-        <td className={styles.keyCell}>
-          <TextInput value={''} name={'configItemKey'} onChange={() => {}} />
+        <td className={styles.editableKeyCell}>
+          <TextInput value={newKey} name={'configItemKey'} onChange={(e) => setNewKey(e.target.value)} />
         </td>
         <td className={styles.valueCell}>
-          <TextInput value={''} name={'configItemValue'} onChange={() => {}} />
+          <TextInput value={newValue} name={'configItemValue'} onChange={(e) => setNewValue(e.target.value)} />
         </td>
         <td>
-          <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => {}}>Add</button>
+          <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={handleAdd}>Add</button>
         </td>
       </tr>
       </tbody>
