@@ -19,14 +19,15 @@ export function *deleteDevice(action: any): any {
   if (deleteResponse.success) {
     yield sleep(DB_PROPAGATION_SECONDS)
 
-    const devicesResult = yield UconfyDevicesApi.instance.getDevices()
+    document.location.href = getDeviceListUri()
+    /*const devicesResult = yield UconfyDevicesApi.instance.getDevices()
     if (!devicesResult.success) {
       toastr['warning']('Server error, please try again')
       return
     }
 
-    yield put(devicesReceived(devicesResult.responseData))
-    document.location.href = getDeviceListUri()
+    console.log('dispatching devices received: ', devicesResult.responseData)
+    yield put(devicesReceived(devicesResult.responseData))*/
   }
 
   yield

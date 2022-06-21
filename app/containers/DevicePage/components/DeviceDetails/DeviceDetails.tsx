@@ -38,7 +38,7 @@ const DeviceDetails = (props: Props) => {
   }
 
   return <>
-    <h3>Access Parameters</h3>
+    <h3>Access</h3>
     <table className={styles.formTable}>
     <tbody>
       <tr>

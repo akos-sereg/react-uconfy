@@ -22,8 +22,16 @@ const devicesDataSelector = () => createSelector(
   (globalState) => globalState ? globalState.devicesData : null
 );
 
+const devicesConfigSelector = () => createSelector(
+  selectGlobal,
+  (globalState) => {
+    return globalState.currentDeviceConfig
+  }
+);
+
 const mapStateToProps = createStructuredSelector({
-  devicesData: devicesDataSelector()
+  devicesData: devicesDataSelector(),
+  deviceConfig: devicesConfigSelector()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

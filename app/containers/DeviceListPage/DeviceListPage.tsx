@@ -1,12 +1,8 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { Component } from 'react'
-import { Link } from 'react-router-dom'
 import DeviceList from './components/DeviceList'
 import AddDeviceItem from './components/DeviceItem/AddDeviceItem'
-import UconfyDevicesApi from '../../services/UconfyDevicesApi'
-import styles from './style.scss'
-import * as toastr from 'toastr'
+import {fetechDevices} from "./actions";
 
 type Props = {
   dispatch: any,
@@ -15,6 +11,10 @@ type Props = {
 };
 
 const DeviceListPage = (props: Props) => {
+
+  useEffect(() => {
+    props.dispatch(fetechDevices())
+  }, [])
 
   return (
       <>

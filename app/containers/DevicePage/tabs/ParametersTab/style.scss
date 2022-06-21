@@ -1,0 +1,34 @@
+.keyValueTable {
+  width: 100%;
+  margin-top: 20px;
+
+  thead {
+    font-weight: 500;
+    background-color: #e9ecef;
+    height: 40px;
+
+    th {
+      padding-left: 20px;
+    }
+  }
+}
+
+.keyCell {
+  width: 150px;
+  padding-right: 30px;
+  padding-left: 20px;
+}
+
+.valueCell {
+  width: 350px;
+  padding-left: 20px;
+  div {
+    margin-top: 10px;
+  }
+}
+
+.configItemBtn {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  width: 70px;
+}
