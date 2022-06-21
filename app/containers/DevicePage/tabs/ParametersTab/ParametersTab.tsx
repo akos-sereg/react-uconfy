@@ -55,9 +55,7 @@ const ParametersTab = (props: Props) => {
       {props.deviceConfig.items.map((configItem: any) => (
         <tr key={configItem.key}>
           <td className={styles.keyCell}>{configItem.key}</td>
-          <td className={styles.valueCell}>
-            <TextInput value={configItem.value} name={configItem.key} onChange={() => {}} />
-          </td>
+          <td className={styles.valueCell}>{configItem.value}</td>
           <td>
             <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleDelete(configItem.key)}>Delete</button>
           </td>
