@@ -22,6 +22,23 @@ class UconfyDevicesApi extends UconfyBackendApi {
     }
   }
 
+  async getLogs(deviceId: string) {
+    try {
+      const response = await axios.get(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/logs`,
+        {
+          headers: UconfyBackendApi.getHeaders()
+        });
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      return { success: false }
+    }
+  }
+
   async updateDevice(deviceId: string, name: string, platform: string) {
     try {
       const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}`,

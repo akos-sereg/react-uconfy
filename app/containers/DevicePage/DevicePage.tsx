@@ -1,14 +1,11 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import TabSelector from './components/TabSelector'
-import CodeTemplates from './components/CodeTemplates'
-import DeviceDetails from './components/DeviceDetails'
 import { Subpage } from '../../model/DevicePage'
-import { deleteDevice, fetchDeviceDetails } from './actions'
-import styles from './style.scss'
-import TextInput from "../../components/TextInput";
+import { fetchDeviceDetails } from './actions'
 import AccessTab from "./tabs/AccessTab";
 import ParametersTab from "./tabs/ParametersTab";
+import ConsoleTab from "./tabs/ConsoleTab";
 
 type Props = {
   dispatch: Function,
@@ -51,6 +48,14 @@ const DevicePage = (props: Props) => {
             match={props.match}
             dispatch={props.dispatch}
             deviceConfig={props.deviceConfig}
+            deviceId={deviceId}
+          />
+        </>)}
+
+        {subpage == Subpage.Console && (<>
+          <ConsoleTab
+            match={props.match}
+            dispatch={props.dispatch}
             deviceId={deviceId}
           />
         </>)}
