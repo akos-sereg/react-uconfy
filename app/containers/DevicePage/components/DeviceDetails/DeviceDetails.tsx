@@ -22,6 +22,14 @@ const DeviceDetails = (props: Props) => {
 
   const handleSave = async () => {
     try {
+      if (name === '') {
+        alert('Name must not be empty')
+        return
+      }
+      if (platform === '') {
+        alert('Platform must not be empty')
+        return
+      }
       const response = await UconfyDevicesApi.instance.updateDevice(deviceId, name, platform)
       if (response.success) {
         setDirty(false)
@@ -30,10 +38,13 @@ const DeviceDetails = (props: Props) => {
           return
         }
 
+        alert('Details saved successfully')
         props.dispatch(devicesReceived(devicesResult.responseData))
+      } else {
+        alert('Could not save details')
       }
     } catch (error) {
-
+      alert('Could not save details')
     }
   }
 

@@ -17,8 +17,8 @@ const App = () => {
 
   return (
      <div>
-       <Helmet titleTemplate="%s - React.js Boilerplate" defaultTitle="React.js Boilerplate">
-         <meta name="description" content="A React.js Boilerplate application" />
+       <Helmet titleTemplate="%s - uConfy" defaultTitle="uConfy">
+         <meta name="description" content="uConfy" />
        </Helmet>
 
        <div className={styles.center}>

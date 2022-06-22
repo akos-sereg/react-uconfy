@@ -54,7 +54,7 @@ const LoginPage = (props: Props) => {
         <title>Main Page</title>
         <meta
           name="description"
-          content="Main page of React.js Boilerplate application"
+          content="uConfy"
         />
       </Helmet>
 

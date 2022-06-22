@@ -15,17 +15,15 @@ const ConsoleTab = (props: Props) => {
   const [pollInterval, setPollInterval] = useState(5)
 
   useEffect(() => {
-    console.log('create timer: pollInterval', pollInterval)
-
-    const pollTask = async () => {
+    const pollLogsTask = async () => {
       const logs = await UconfyDevicesApi.instance.getLogs(props.deviceId)
       consoleEl.current.innerHTML = ''
       logs.responseData.forEach((logEntry: any) => consoleEl.current.innerHTML += logEntry + "<br/>")
       consoleEl.current.scrollTop = consoleEl.current.scrollHeight;
     }
 
-    pollTask()
-    const intervalHandler = setInterval(pollTask,pollInterval * 1000)
+    pollLogsTask()
+    const intervalHandler = setInterval(pollLogsTask,pollInterval * 1000)
     return () => clearInterval(intervalHandler)
   })
 

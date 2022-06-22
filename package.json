@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "react-uconfy",
   "version": "1.0.0",
-  "description": "A minimal react-redux boilerplate with all the best practices",
+  "description": "frontend for uConfy portal",
   "engines": {
     "npm": ">=3",
     "node": ">=5"

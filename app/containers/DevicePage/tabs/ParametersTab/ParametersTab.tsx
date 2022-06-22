@@ -74,6 +74,21 @@ const ParametersTab = (props: Props) => {
       </tr>
       </tbody>
     </table>
+    <h3>Pre-defined parameters</h3>
+    <p>
+      If you are using <a target={'out'} href={'https://github.com/akos-sereg/esp32-uconfy-component/wiki'}>esp32-uconfy-component</a> library
+      on your ESP32 device to connect to wifi (eg. <i>uconfy_initialize_wifi</i> call with <i>allow_wifi_override</i> parameter set to 1),
+      you can define the following keys to enable Primary / Fallback wifi.
+      <br/><br/>
+      <ul>
+        <li><i>primary_wifi</i>: value is the SSID of the Primary wifi network</li>
+        <li><i>primary_pwd</i>: value is the password of the Primary wifi network</li>
+        <li><i>fback_wifi</i>: value is the SSID of the Secondary wifi network</li>
+        <li><i>fback_pwd</i>: value is the password of the Secondary wifi network</li>
+      </ul>
+
+      This way you can configure wifi zones remotely, and you dont have to re-deploy hardcoded wifi credentials.
+    </p>
   </>
 }
 
