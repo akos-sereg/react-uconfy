@@ -1,16 +1,14 @@
 import * as React from 'react'
-import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-import { Switch, Route, useLocation } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
-import LoginPage from 'containers/LoginPage/index'
-import DeviceListPage from 'containers/DeviceListPage'
-import DevicePage from 'containers/DevicePage'
-import AddDevicePage from 'containers/AddDevicePage'
-import NotFoundPage from 'containers/NotFoundPage'
-import Header from 'components/Header'
-import Navigation from 'components/Navigation'
-import Footer from 'components/Footer'
+import LoginPage from '../LoginPage/index'
+import DeviceListPage from '../DeviceListPage'
+import DevicePage from '../DevicePage'
+import AddDevicePage from '../AddDevicePage'
+import NotFoundPage from '../NotFoundPage'
+import Header from '../../components/Header'
+import Navigation from '../../components/Navigation'
 import styles from './style.scss'
 
 const App = () => {
@@ -29,7 +27,10 @@ const App = () => {
            <Route exact path="/login" component={LoginPage} />
            <Route exact path="/device/create" component={AddDevicePage} />
            <Route exact path="/device" component={DeviceListPage} />
-           <Route path="/device/:id" component={DevicePage} />
+           <Route exact path="/device/:id" component={DevicePage} />
+           <Route exact path="/device/:id/parameters" component={DevicePage} />
+           <Route exact path="/device/:id/console" component={DevicePage} />
+           <Route exact path="/device/:id/activity" component={DevicePage} />
            <Route path="" component={NotFoundPage} />
          </Switch>
        </div>

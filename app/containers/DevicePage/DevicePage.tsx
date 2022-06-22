@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import {useEffect, useState} from 'react'
 import TabSelector from './components/TabSelector'
-import { Subpage } from '../../model/DevicePage'
-import { fetchDeviceDetails } from './actions'
+import {Subpage} from '../../model/DevicePage'
+import {fetchDeviceDetails} from './actions'
 import AccessTab from "./tabs/AccessTab";
 import ParametersTab from "./tabs/ParametersTab";
+import {getDeviceSubpageUri} from '../../services/UrlService'
 import ConsoleTab from "./tabs/ConsoleTab";
 
 type Props = {
@@ -22,6 +23,7 @@ const DevicePage = (props: Props) => {
 
   const handleTabChanged = (currentTab: Subpage) => {
     setSubpage(currentTab)
+    document.location.href = getDeviceSubpageUri(deviceId, currentTab)
   }
 
   useEffect(() => {
