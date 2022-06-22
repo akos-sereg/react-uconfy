@@ -17,7 +17,6 @@ type Props = {
 
 const DevicePage = (props: Props) => {
 
-  const initialSubPage = getSubpageFromUri()
   const [ subpage, setSubpage ] = useState(getSubpageFromUri())
   const deviceId = props.match.params.id
   const currentDevice = props.devicesData ? props.devicesData.devices.find((device: any) => device.deviceID === deviceId) : {}

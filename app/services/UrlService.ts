@@ -5,6 +5,10 @@
 
 import {Subpage} from "../model/DevicePage";
 
+const getRootPage = () => {
+  return '/#/'
+}
+
 const getCreateDeviceUri = () => {
   return '/#/device/create'
 }
@@ -62,5 +66,6 @@ export {
   getDeviceListUri,
   getDeviceSubpageUri,
   getHashPage,
-  getSubpageFromUri
+  getSubpageFromUri,
+  getRootPage
 }

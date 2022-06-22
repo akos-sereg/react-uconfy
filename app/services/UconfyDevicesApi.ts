@@ -1,5 +1,6 @@
 import UconfyBackendApi from './UconfyBackendApi'
 import axios from 'axios'
+import {getRootPage} from "./UrlService";
 
 class UconfyDevicesApi extends UconfyBackendApi {
 
@@ -18,6 +19,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
@@ -35,6 +40,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
@@ -53,6 +62,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
@@ -71,6 +84,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
@@ -90,6 +107,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
@@ -108,6 +129,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
@@ -126,6 +151,10 @@ class UconfyDevicesApi extends UconfyBackendApi {
         responseStatus: response.status
       };
     } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
       return { success: false }
     }
   }
