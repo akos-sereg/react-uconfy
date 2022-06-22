@@ -10,10 +10,11 @@ type Props = {
   value?: string,
   error?: any,
   type?: string,
-  disabled?: boolean
+  disabled?: boolean,
+  maxLength?: number
 };
 
-const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, disabled, error }) => {
+const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, disabled, error, maxLength }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += ' has-error';
@@ -35,6 +36,7 @@ const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholde
           value={value}
           onChange={onChange}
           onKeyUp={onKeyUp}
+          maxLength={maxLength}
         />
         <div className="input">{error}</div>
       </div>

@@ -63,7 +63,7 @@ const ParametersTab = (props: Props) => {
       ))}
       <tr>
         <td className={styles.editableKeyCell}>
-          <TextInput value={newKey} name={'configItemKey'} onChange={(e) => setNewKey(e.target.value)} />
+          <TextInput value={newKey} name={'configItemKey'} onChange={(e) => setNewKey(e.target.value)} maxLength={15} />
         </td>
         <td className={styles.valueCell}>
           <TextInput value={newValue} name={'configItemValue'} onChange={(e) => setNewValue(e.target.value)} />
