@@ -39,6 +39,13 @@ const TabSelector = (props: Props) => {
      >
        <a href="#">Console</a>
      </li>
+    <li
+      role="presentation"
+      className={subpage == Subpage.Command ? 'active' : ''}
+      onClick={(e) => handleNavigation(e, Subpage.Command)}
+    >
+      <a href="#">Command</a>
+    </li>
      <li
        role="presentation"
        className={subpage == Subpage.Activity ? 'active' : ''}

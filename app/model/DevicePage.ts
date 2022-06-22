@@ -3,4 +3,5 @@ export enum Subpage {
   Parameters,
   Console,
   Activity,
+  Command
 }
