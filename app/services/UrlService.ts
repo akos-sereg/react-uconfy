@@ -25,6 +25,8 @@ const getDeviceSubpageUri = (deviceId: string, subpage: Subpage) => {
       return `/#/device/${deviceId}/console`
     case Subpage.Activity:
       return `/#/device/${deviceId}/activity`
+    case Subpage.Command:
+      return `/#/device/${deviceId}/command`
     case Subpage.Access:
     default:
       return `/#/device/${deviceId}`
@@ -46,7 +48,11 @@ const getSubpageFromUri = () => {
   }
 
   if (hash.match(/\#\/device\/[a-z0-9\-]*\/activity$/gm) != null) {
-    return Subpage.Console
+    return Subpage.Activity
+  }
+
+  if (hash.match(/\#\/device\/[a-z0-9\-]*\/command$/gm) != null) {
+    return Subpage.Command
   }
 
   return Subpage.Access

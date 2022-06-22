@@ -31,6 +31,7 @@ const App = () => {
            <Route exact path="/device/:id/parameters" component={DevicePage} />
            <Route exact path="/device/:id/console" component={DevicePage} />
            <Route exact path="/device/:id/activity" component={DevicePage} />
+           <Route exact path="/device/:id/command" component={DevicePage} />
            <Route path="" component={NotFoundPage} />
          </Switch>
        </div>
