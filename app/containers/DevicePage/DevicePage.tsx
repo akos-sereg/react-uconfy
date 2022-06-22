@@ -5,7 +5,7 @@ import {Subpage} from '../../model/DevicePage'
 import {fetchDeviceDetails} from './actions'
 import AccessTab from "./tabs/AccessTab";
 import ParametersTab from "./tabs/ParametersTab";
-import {getDeviceSubpageUri} from '../../services/UrlService'
+import {getDeviceSubpageUri, getSubpageFromUri} from '../../services/UrlService'
 import ConsoleTab from "./tabs/ConsoleTab";
 
 type Props = {
@@ -17,7 +17,8 @@ type Props = {
 
 const DevicePage = (props: Props) => {
 
-  const [ subpage, setSubpage ] = useState(Subpage.Access)
+  const initialSubPage = getSubpageFromUri()
+  const [ subpage, setSubpage ] = useState(getSubpageFromUri())
   const deviceId = props.match.params.id
   const currentDevice = props.devicesData ? props.devicesData.devices.find((device: any) => device.deviceID === deviceId) : {}
 

@@ -1,3 +1,8 @@
+/**
+ * The intention of this service is to know about all possible URL references.
+ * All url construction / parsing logic should go here - this way it is easier later to lookup url references.
+ */
+
 import {Subpage} from "../model/DevicePage";
 
 const getCreateDeviceUri = () => {
@@ -22,8 +27,40 @@ const getDeviceSubpageUri = (deviceId: string, subpage: Subpage) => {
   }
 }
 
+const getSubpageFromUri = () => {
+  const hash = document.location.hash
+  if (hash.match(/\#\/device\/[a-z0-9\-]*$/gm) != null) {
+    return Subpage.Access
+  }
+
+  if (hash.match(/\#\/device\/[a-z0-9\-]*\/parameters$/gm) != null) {
+    return Subpage.Parameters
+  }
+
+  if (hash.match(/\#\/device\/[a-z0-9\-]*\/console$/gm) != null) {
+    return Subpage.Console
+  }
+
+  if (hash.match(/\#\/device\/[a-z0-9\-]*\/activity$/gm) != null) {
+    return Subpage.Console
+  }
+
+  return Subpage.Access
+}
+
+const getHashPage = (hash: string) => {
+  return `/${hash}`
+}
+
 const getDeviceListUri = () => {
   return '/#/device'
 }
 
-export { getCreateDeviceUri, getDeviceUri, getDeviceListUri,getDeviceSubpageUri }
+export {
+  getCreateDeviceUri,
+  getDeviceUri,
+  getDeviceListUri,
+  getDeviceSubpageUri,
+  getHashPage,
+  getSubpageFromUri
+}

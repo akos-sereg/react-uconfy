@@ -16,7 +16,11 @@ const ConsoleTab = (props: Props) => {
 
   useEffect(() => {
     const pollLogsTask = async () => {
+
       const logs = await UconfyDevicesApi.instance.getLogs(props.deviceId)
+      if (consoleEl.current == null) {
+        return
+      }
       consoleEl.current.innerHTML = ''
       logs.responseData.forEach((logEntry: any) => consoleEl.current.innerHTML += logEntry + "<br/>")
       consoleEl.current.scrollTop = consoleEl.current.scrollHeight;
