@@ -72,7 +72,7 @@ class UconfyDevicesApi extends UconfyBackendApi {
 
   async updateConfig(deviceId: string, items: any) {
     try {
-      const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config`,
+      const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config?origin=web`,
         { deviceId, items },
         {
           headers: UconfyBackendApi.getHeaders()
