@@ -34,11 +34,16 @@
   }
 }
 
-.loadingCell {
-  text-align: right;
+.loading {
+  opacity: 0.5;
+}
+
+.loadingTd {
+  height: 60px;
   img {
-    height: 30px;
-    padding-right: 20px;
+    height: 25px;
+    padding-left: 25px;
+    padding-right: 15px;
   }
 }
 

@@ -42,12 +42,12 @@ const ParametersTab = (props: Props) => {
     <p>
       Below parameters can be fetched from your device. See <i>Access</i> tab for details.
     </p>
-    <table className={styles.keyValueTable}>
+    <table className={`${styles.keyValueTable} ${!props.deviceConfig ? styles.loading : ''}`}>
       <thead>
       <tr>
         <th>Key</th>
         <th>Value</th>
-        <td className={styles.loadingCell}>{props.deviceConfig ? '' : <img src={loadingGif} />}</td>
+        <td></td>
       </tr>
       </thead>
       <tbody>
@@ -60,6 +60,12 @@ const ParametersTab = (props: Props) => {
           </td>
         </tr>
       ))}
+      {!props.deviceConfig &&
+        <tr>
+          <td className={styles.loadingTd}><img src={loadingGif} /> loading ...</td>
+          <td></td>
+          <td></td>
+        </tr>}
       <tr>
         <td className={styles.editableKeyCell}>
           <TextInput value={newKey} name={'configItemKey'} onChange={(e) => setNewKey(e.target.value)} maxLength={15} />

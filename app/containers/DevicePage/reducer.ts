@@ -1,4 +1,4 @@
-import { FETCH_DEVICE_RESPONSE_RECEIVED } from './actions'
+import {FETCH_DEVICE, FETCH_DEVICE_RESPONSE_RECEIVED} from './actions'
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
@@ -7,6 +7,12 @@ const initialState = fromJS({
 
 function devicePageReducer(state = initialState, action: any) {
   switch (action.type) {
+    case FETCH_DEVICE: {
+      return {
+        ...state,
+        currentDeviceConfig: null
+      }
+    }
     case FETCH_DEVICE_RESPONSE_RECEIVED:
       return {
         ...state,
