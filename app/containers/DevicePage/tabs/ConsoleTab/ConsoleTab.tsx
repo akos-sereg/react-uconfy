@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styles from './style.scss'
 import {useEffect, useRef, useState} from "react";
+import loadingGif from '../../../../assets/loading.gif'
 import UconfyDevicesApi from "../../../../services/UconfyDevicesApi";
 
 interface Props {
@@ -16,7 +17,7 @@ const ConsoleTab = (props: Props) => {
 
   useEffect(() => {
     const pollLogsTask = async () => {
-
+      consoleEl.current.innerHTML = 'loading ...'
       const logs = await UconfyDevicesApi.instance.getLogs(props.deviceId)
       if (consoleEl.current == null) {
         return
@@ -45,7 +46,7 @@ const ConsoleTab = (props: Props) => {
       <option value={60}>1 minute</option>
       <option value={360}>5 minute</option>
     </select>
-    <div className={styles.console} ref={consoleEl}>
+    <div className={`${styles.console}`} ref={consoleEl}>
     </div>
   </>
 }
