@@ -12,7 +12,7 @@ interface Props {
 const ConsoleTab = (props: Props) => {
 
   const consoleEl = useRef(null);
-  const [pollInterval, setPollInterval] = useState(5)
+  const [pollInterval, setPollInterval] = useState(30)
 
   useEffect(() => {
     const pollLogsTask = async () => {
@@ -41,7 +41,7 @@ const ConsoleTab = (props: Props) => {
       <option value={5}>5 seconds</option>
       <option value={10}>10 seconds</option>
       <option value={15}>15 seconds</option>
-      <option value={30}>30 seconds</option>
+      <option value={30} selected>30 seconds</option>
       <option value={60}>1 minute</option>
       <option value={360}>5 minute</option>
     </select>

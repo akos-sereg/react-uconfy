@@ -1,8 +1,7 @@
 import * as React from 'react'
 import styles from './style.scss'
-import CodeTemplates from "../../components/CodeTemplates";
-import DeviceDetails from "../../components/DeviceDetails";
 import {useState} from "react";
+import loadingGif from '../../../../assets/loading.gif'
 import {deleteDevice, fetchDeviceDetails} from "../../actions";
 import TextInput from "../../../../components/TextInput";
 import UconfyDevicesApi from "../../../../services/UconfyDevicesApi";
@@ -48,7 +47,7 @@ const ParametersTab = (props: Props) => {
       <tr>
         <th>Key</th>
         <th>Value</th>
-        <td>&nbsp;</td>
+        <td className={styles.loadingCell}>{props.deviceConfig ? '' : <img src={loadingGif} />}</td>
       </tr>
       </thead>
       <tbody>
