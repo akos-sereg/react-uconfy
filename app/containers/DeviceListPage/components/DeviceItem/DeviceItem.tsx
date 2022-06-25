@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
-import { getDeviceUri } from '../../../../services/UrlService'
+import {getDeviceListUri, getDeviceUri, getRootPage} from '../../../../services/UrlService'
 import { setNavigation } from '../../../../components/Navigation/actions'
 import styles from './style.scss'
 
@@ -17,8 +17,8 @@ const DeviceItem = (props: Props) => {
 
     // todo: upgrade react-redux and use useDispatch
     props.dispatch(setNavigation([
-       { name: 'uConfy', uri: '/#/' },
-       { name: 'Devices', uri: '/#/device' },
+       { name: 'uConfy', uri: getRootPage() },
+       { name: 'Devices', uri: getDeviceListUri() },
        { name: props.name },
      ]))
   }

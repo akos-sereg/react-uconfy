@@ -1,3 +1,5 @@
+import config from './Config'
+
 class UconfyBackendApi {
 
   static setJwtToken(token: string) {
@@ -15,8 +17,8 @@ class UconfyBackendApi {
     }
   }
 
-  static endpointUrl = 'http://127.0.0.1:8080/api'
-  static requestTimeout = 5000
+  static endpointUrl = config.endpointUrl
+  static requestTimeout = config.requestTimeout
 }
 
 export default UconfyBackendApi

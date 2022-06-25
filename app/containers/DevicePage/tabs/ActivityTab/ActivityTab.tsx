@@ -6,11 +6,11 @@ interface Props {
   dispatch: Function
 }
 
-const CommandTab = (props: Props) => {
+const ActivityTab = (props: Props) => {
 
   return <div className={styles.container}>
     Coming soon ...
   </div>
 }
 
-export default CommandTab;
+export default ActivityTab;

@@ -8,6 +8,7 @@ import ParametersTab from "./tabs/ParametersTab";
 import {getDeviceSubpageUri, getSubpageFromUri} from '../../services/UrlService'
 import ConsoleTab from "./tabs/ConsoleTab";
 import CommandTab from "./tabs/CommandTab";
+import ActivityTab from "./tabs/ActivityTab";
 
 type Props = {
   dispatch: Function,
@@ -65,6 +66,13 @@ const DevicePage = (props: Props) => {
 
         {subpage == Subpage.Command && (<>
           <CommandTab
+            match={props.match}
+            dispatch={props.dispatch}
+          />
+        </>)}
+
+        {subpage == Subpage.Activity && (<>
+          <ActivityTab
             match={props.match}
             dispatch={props.dispatch}
           />

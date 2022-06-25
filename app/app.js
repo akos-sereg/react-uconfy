@@ -34,6 +34,7 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'styles/theme.scss';
 
 import configureStore from './configureStore';
+import {getDeviceListUri, getRootPage} from "./services/UrlService";
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -54,22 +55,22 @@ const updateLocation = () => {
   switch (document.location.hash) {
     case '#/':
       store.dispatch(setNavigation([
-           { name: 'uConfy', uri: '/#/' },
+           { name: 'uConfy', uri: getRootPage() },
            { name: 'Login' },
          ]));
       break;
 
     case '#/device/create':
       store.dispatch(setNavigation([
-           { name: 'uConfy', uri: '/#/' },
-           { name: 'Devices', uri: '/#/device' },
+           { name: 'uConfy', uri: getRootPage() },
+           { name: 'Devices', uri: getDeviceListUri() },
            { name: 'Create Device' },
          ]));
       break;
 
     case '#/device':
       store.dispatch(setNavigation([
-           { name: 'uConfy', uri: '/#/' },
+           { name: 'uConfy', uri: getRootPage() },
            { name: 'Devices' },
          ]));
       break;
@@ -113,7 +114,7 @@ if (UconfyBackendApi.getJwtToken()) {
   localStorage.setItem('requested_hash', document.location.hash)
 
   // ... but first, navigate to device list page, so that device list can be fetched from backend first
-  document.location.href = '/#/device'
+  document.location.href = getDeviceListUri()
 } else {
   updateLocation();
 }

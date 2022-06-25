@@ -4,32 +4,35 @@
  */
 
 import {Subpage} from "../model/DevicePage";
+import config from './Config'
+
+const appRoot = config.appRoot
 
 const getRootPage = () => {
-  return '/#/'
+  return `${appRoot}#/`
 }
 
 const getCreateDeviceUri = () => {
-  return '/#/device/create'
+  return `${appRoot}#/device/create`
 }
 
 const getDeviceUri = (deviceId: string) => {
-  return `/#/device/${deviceId}`
+  return `${appRoot}#/device/${deviceId}`
 }
 
 const getDeviceSubpageUri = (deviceId: string, subpage: Subpage) => {
   switch (subpage) {
     case Subpage.Parameters:
-      return `/#/device/${deviceId}/parameters`
+      return `${appRoot}#/device/${deviceId}/parameters`
     case Subpage.Console:
-      return `/#/device/${deviceId}/console`
+      return `${appRoot}#/device/${deviceId}/console`
     case Subpage.Activity:
-      return `/#/device/${deviceId}/activity`
+      return `${appRoot}#/device/${deviceId}/activity`
     case Subpage.Command:
-      return `/#/device/${deviceId}/command`
+      return `${appRoot}#/device/${deviceId}/command`
     case Subpage.Access:
     default:
-      return `/#/device/${deviceId}`
+      return `${appRoot}#/device/${deviceId}`
   }
 }
 
@@ -59,11 +62,11 @@ const getSubpageFromUri = () => {
 }
 
 const getHashPage = (hash: string) => {
-  return `/${hash}`
+  return `${appRoot}${hash}`
 }
 
 const getDeviceListUri = () => {
-  return '/#/device'
+  return `${appRoot}#/device`
 }
 
 export {
