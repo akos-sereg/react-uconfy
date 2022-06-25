@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
+import loadingGif from '../../assets/loading.gif'
 import DeviceList from './components/DeviceList'
 import AddDeviceItem from './components/DeviceItem/AddDeviceItem'
 import {fetechDevices} from "./actions";
+import styles from './style.scss'
 
 type Props = {
   dispatch: any,
@@ -19,9 +21,15 @@ const DeviceListPage = (props: Props) => {
   return (
       <>
         <h2>List of Device</h2>
-        <p>
-          Registered devices can be found below.
-        </p>
+        {props.devicesData ?
+          <p>
+            Registered devices can be found below.
+          </p> :
+          <div className={styles.loadingContainer}>
+            <img src={loadingGif} /> Loading ...
+          </div>
+        }
+
 
         {props.devicesData && <DeviceList
           items={props.devicesData.devices}
