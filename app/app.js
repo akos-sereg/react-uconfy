@@ -35,6 +35,8 @@ import 'styles/theme.scss';
 
 import configureStore from './configureStore';
 import {getDeviceListUri, getRootPage} from "./services/UrlService";
+import config from "./services/Config";
+import {login} from "./containers/LoginPage/actions";
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -105,17 +107,22 @@ if (module.hot) {
 
 render();
 
-// autologin, if jwt token is available
-if (UconfyBackendApi.getJwtToken()) {
-  UconfyLoginApi.instance.getMe()
-
-  // store requested location, so that later - once app state is loaded from backend - we can navigate there
-  // see DeviceListPage/saga.ts, fetchDevices
-  localStorage.setItem('requested_hash', document.location.hash)
-
-  // ... but first, navigate to device list page, so that device list can be fetched from backend first
-  document.location.href = getDeviceListUri()
+if (document.location.hash.indexOf('demologin=1') !== -1) {
+  store.dispatch(login(config.demoUser, ''))
 } else {
-  updateLocation();
-}
+  // autologin, if jwt token is available
+  if (UconfyBackendApi.getJwtToken()) {
+    UconfyLoginApi.instance.getMe()
 
+    // store requested location, so that later - once app state is loaded from backend - we can navigate there
+    // see DeviceListPage/saga.ts, fetchDevices
+    localStorage.setItem('requested_hash', document.location.hash)
+
+    // ... but first, navigate to device list page, so that device list can be fetched from backend first
+    document.location.href = getDeviceListUri()
+  } else {
+    updateLocation();
+  }
+
+
+}
