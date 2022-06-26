@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styles from './style.scss'
 import {useEffect, useRef, useState} from "react";
-import loadingGif from '../../../../assets/loading.gif'
 import UconfyDevicesApi from "../../../../services/UconfyDevicesApi";
 
 interface Props {
@@ -38,11 +37,11 @@ const ConsoleTab = (props: Props) => {
       You can browse logs that are sent from your device
     </p>
     Choose poll interval:
-    <select onChange={(e) => setPollInterval(parseInt(e.target.value))} className={styles.pollIntervalSelector}>
+    <select defaultValue={360} onChange={(e) => setPollInterval(parseInt(e.target.value))} className={styles.pollIntervalSelector}>
       <option value={5}>5 seconds</option>
       <option value={10}>10 seconds</option>
       <option value={15}>15 seconds</option>
-      <option value={30} selected>30 seconds</option>
+      <option value={30}>30 seconds</option>
       <option value={60}>1 minute</option>
       <option value={360}>5 minute</option>
     </select>
