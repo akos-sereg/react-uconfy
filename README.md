@@ -27,7 +27,7 @@ This will produce artifacts under ``build`` folder
 
 #### Stack
 - React v17.0.2 - released 22nd of March 2021
-- Redux v4.0.1 - released 13rd of Oct 2018
+- Redux v4.2.0 - released 18th of April 2022
 
 #### Development and Build
 - Hot Reload
