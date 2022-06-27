@@ -9,10 +9,7 @@ import { login } from './actions'
 import styles from './style.scss'
 
 type Props = {
-  // dispatch to props
   dispatch: Function,
-
-  // state to props
   isProcessing: boolean
 };
 

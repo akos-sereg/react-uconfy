@@ -19,4 +19,4 @@ const awsConfig = {
   demoUser: 'demouser@demo.de'
 }
 
-export default localDockerConfig
+export default devConfig

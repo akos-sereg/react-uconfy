@@ -10,6 +10,7 @@ import NotFoundPage from '../NotFoundPage'
 import Header from '../../components/Header'
 import Navigation from '../../components/Navigation'
 import styles from './style.scss'
+import SignupPage from "../SignupPage";
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
          <Switch>
            <Route exact path="/" component={LoginPage} />
            <Route exact path="/login" component={LoginPage} />
+           <Route exact path="/signup" component={SignupPage} />
            <Route exact path="/device/create" component={AddDevicePage} />
            <Route exact path="/device" component={DeviceListPage} />
            <Route exact path="/device/:id" component={DevicePage} />

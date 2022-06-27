@@ -55,11 +55,19 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const updateLocation = () => {
   switch (document.location.hash) {
+    case '#/login':
     case '#/':
       store.dispatch(setNavigation([
            { name: 'uConfy', uri: getRootPage() },
            { name: 'Login' },
          ]));
+      break;
+
+    case '#/signup':
+      store.dispatch(setNavigation([
+        { name: 'uConfy', uri: getRootPage() },
+        { name: 'Signup' },
+      ]));
       break;
 
     case '#/device/create':
