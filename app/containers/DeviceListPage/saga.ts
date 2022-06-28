@@ -4,7 +4,7 @@ import {
 } from './actions'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi';
 import * as toastr from 'toastr'
-import {getDeviceListUri, getHashPage, getRootPage} from "../../services/UrlService";
+import {getDeviceListUri, getHashPage, getMarketingPage, getRootPage} from "../../services/UrlService";
 import {setNavigation} from "../../components/Navigation/actions";
 
 export function *fetchDevices(action: any): any {
@@ -24,7 +24,7 @@ export function *fetchDevices(action: any): any {
     if (requestedHash.startsWith('#/device/')) {
       const currentDevice = result.responseData.devices.find((device: any) => requestedHash.indexOf(device.deviceID) !== -1)
       yield put(setNavigation([
-        { name: 'uConfy', uri: getRootPage() },
+        { name: 'uConfy', uri: getMarketingPage() },
         { name: 'Devices', uri: getDeviceListUri() },
         { name: currentDevice.name },
       ]))

@@ -8,6 +8,10 @@ import config from './Config'
 
 const appRoot = config.appRoot
 
+const getMarketingPage = () => {
+  return '/'
+}
+
 const getRootPage = () => {
   return `${appRoot}#/`
 }
@@ -76,5 +80,6 @@ export {
   getDeviceSubpageUri,
   getHashPage,
   getSubpageFromUri,
-  getRootPage
+  getRootPage,
+  getMarketingPage
 }

@@ -1,12 +1,18 @@
 import UconfyBackendApi from './UconfyBackendApi'
 import axios from 'axios'
 import {getRootPage} from "./UrlService";
+import config from './Config'
+import {DevicesApi, GetDevicesResponse} from "./api/DevicesApi";
+import BackendlessUconfyDevicesApi from "./BackendlessUconfyDevicesApi";
+import {WrappedResponse} from "./api/ServerApi";
 
-class UconfyDevicesApi extends UconfyBackendApi {
+class UconfyDevicesApi extends UconfyBackendApi implements DevicesApi {
 
-  static instance = new UconfyDevicesApi()
+  static instance = config.endpointUrl === 'localStorage' ?
+    new BackendlessUconfyDevicesApi()
+    : new UconfyDevicesApi()
 
-  async getDevices() {
+  async getDevices(): Promise<WrappedResponse<GetDevicesResponse>> {
     try {
       const response = await axios.get(`${UconfyBackendApi.endpointUrl}/device`,
         {

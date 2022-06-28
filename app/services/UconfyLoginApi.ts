@@ -1,5 +1,7 @@
 import UconfyBackendApi from './UconfyBackendApi'
+import config from './Config'
 import axios from 'axios'
+import BackendlessUconfyLoginApi from "./BackendlessUconfyLoginApi";
 
 export interface UserData {
   apiKey: string
@@ -10,7 +12,7 @@ export interface UserData {
 }
 
 class UconfyLoginApi extends UconfyBackendApi {
-  static instance = new UconfyLoginApi()
+  static instance = config.endpointUrl === 'localStorage' ? new BackendlessUconfyLoginApi() : new UconfyLoginApi()
 
   static setUserData(userData: UserData) {
     localStorage.setItem('userData', JSON.stringify(userData))
@@ -39,7 +41,7 @@ class UconfyLoginApi extends UconfyBackendApi {
         success: true,
         responseData: response.data,
         responseStatus: response.status
-      };
+      }
     } catch (error) {
       return { success: false }
     }
