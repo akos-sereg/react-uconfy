@@ -9,23 +9,23 @@ type Props = {
 
 export class NotificationListener {
   handler: Function
+  message: string
 
   showMessage(text: string) {
+    this.message = text
     if (this.handler) {
       this.handler(text)
-    } else {
-      // wait until component gets rendered and handler is subscribed
-      const self = this
-      setTimeout(() => {
-        if (self.handler) {
-          self.handler(text)
-        }
-      }, 500)
     }
   }
 
   subscribe(handler: Function) {
     this.handler = handler
+
+    if (this.message) {
+      // in case showMessage was called already, executing handler, so that message can be displayed
+      this.handler(this.message)
+      this.message = null
+    }
   }
 }
 
