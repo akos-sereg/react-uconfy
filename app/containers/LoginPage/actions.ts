@@ -1,6 +1,7 @@
 // HTTP Requests
 export const LOGIN_REQUEST_SENT = 'react-uconfy/Login/LoginRequest';
 export const LOGIN_ERROR = 'react-uconfy/Login/LOGIN_ERROR';
+export const ERASE_LOGIN_ERROR_MESSAGE = 'react-uconfy/Login/ERASE_LOGIN_ERROR_MESSAGE'
 export const LOGIN_RESPONSE_RECEIVED = 'react-uconfy/Login/LoginResponse';
 
 // App
@@ -23,6 +24,12 @@ export function loginError(errorMessage: string) {
       loginErrorMessage: errorMessage
     }
   };
+}
+
+export function eraseLoginErrorMessage() {
+  return {
+    type: ERASE_LOGIN_ERROR_MESSAGE
+  }
 }
 
 export function loginResponseReceived() {

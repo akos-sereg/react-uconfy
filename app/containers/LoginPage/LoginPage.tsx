@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import TextInput from '../../components/TextInput'
 import UconfyBackendApi from '../../services/UconfyBackendApi'
 import { setNavigation } from '../../components/Navigation/actions'
-import { login } from './actions'
+import {eraseLoginErrorMessage, login} from './actions'
 import styles from './style.scss'
 import {Link} from "react-router-dom";
 import {getSignupLink} from "../../services/UrlService";
@@ -49,6 +49,11 @@ const LoginPage = (props: Props) => {
         setLoginForm({ ...loginForm, password: event.target.value })
         break
     }
+  }
+
+  const notificationClosed = () => {
+    console.log('--> notificationClosed')
+    props.dispatch(eraseLoginErrorMessage())
   }
 
   return (
@@ -111,7 +116,7 @@ const LoginPage = (props: Props) => {
         </tbody>
       </table>
 
-      <NotificationBar handle={notification} />
+      <NotificationBar handle={notification} onClose={notificationClosed} />
     </div>
   );
 }

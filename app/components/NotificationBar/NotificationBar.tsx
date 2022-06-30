@@ -3,7 +3,8 @@ import {useState} from "react"
 import styles from './style.scss'
 
 type Props = {
-  handle: NotificationListener
+  handle: NotificationListener,
+  onClose?: Function
 };
 
 export class NotificationListener {
@@ -41,6 +42,14 @@ const NotificationBar = (props: Props) => {
   const handleClose = (e: any) => {
     e.preventDefault()
     setDisplayed(false)
+    if (props.onClose) {
+      try {
+        props.onClose()
+      } catch (error) {
+        console.log('Consumer component threw an error')
+        console.error(error)
+      }
+    }
   }
 
   return (
