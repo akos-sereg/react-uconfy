@@ -5,21 +5,23 @@ import {Link} from "react-router-dom";
 import {getDeviceListUri, getLoginLink} from "../../services/UrlService";
 import {useState} from "react";
 import UconfyLoginApi from "../../services/UconfyLoginApi";
+import NotificationBar, {NotificationListener} from "../../components/NotificationBar/NotificationBar";
 
 const SignupPage = () => {
   const [signupInProgress, setSignupInProgerss] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const notification = new NotificationListener()
 
   const handleSignup = async () => {
     if (password === '' || password.length <= 5) {
-      alert('Password must be at least 6 characters long')
+      notification.showMessage('Password must be at least 6 characters long')
       return
     }
 
     if (password != passwordConfirmation) {
-      alert('Password mismatch')
+      notification.showMessage('Password mismatch')
       return
     }
 
@@ -29,9 +31,10 @@ const SignupPage = () => {
       if (signupResponse.success) {
         location.href = getDeviceListUri()
       } else {
-        // toastr["warning"]('Whoops, cant signup now, sorry. Try again later.')
+        notification.showMessage('Whoops, cant signup now, sorry. Try again later.')
       }
     } catch (error) {
+      notification.showMessage('Unexpected error occurred. Try again later.')
       console.error(error)
     } finally {
       setSignupInProgerss(false)
@@ -97,6 +100,8 @@ const SignupPage = () => {
       </tr>
       </tbody>
     </table>
+
+    <NotificationBar handle={notification} />
   </>
 }
 
