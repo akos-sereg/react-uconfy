@@ -1,5 +1,6 @@
 // HTTP Requests
 export const LOGIN_REQUEST_SENT = 'react-uconfy/Login/LoginRequest';
+export const LOGIN_ERROR = 'react-uconfy/Login/LOGIN_ERROR';
 export const LOGIN_RESPONSE_RECEIVED = 'react-uconfy/Login/LoginResponse';
 
 // App
@@ -11,6 +12,15 @@ export function login(username: string, password: string) {
     payload: {
       username,
       password
+    }
+  };
+}
+
+export function loginError(errorMessage: string) {
+  return {
+    type: LOGIN_ERROR,
+    payload: {
+      loginErrorMessage: errorMessage
     }
   };
 }

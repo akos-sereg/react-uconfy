@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects'
 import { getDeviceListUri } from '../../services/UrlService'
-import { LOGIN_REQUEST_SENT, loginResponseReceived, loginSuccess } from './actions'
+import {LOGIN_REQUEST_SENT, loginError, loginResponseReceived, loginSuccess} from './actions'
 import UconfyLoginApi from '../../services/UconfyLoginApi'
 
 export function* doLogin(loginAction: any): any {
@@ -16,10 +16,9 @@ export function* doLogin(loginAction: any): any {
           result.token,
           result.userID))
 
-      // toastr['success']('Successfully logged in')
       location.href = getDeviceListUri()
     } else {
-      // toastr['warning']('Login failed')
+      yield put(loginError('Invalid credentials'))
     }
 
   } catch (error) {

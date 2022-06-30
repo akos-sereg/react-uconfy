@@ -12,6 +12,14 @@ export class NotificationListener {
   showMessage(text: string) {
     if (this.handler) {
       this.handler(text)
+    } else {
+      // wait until component gets rendered and handler is subscribed
+      const self = this
+      setTimeout(() => {
+        if (self.handler) {
+          self.handler(text)
+        }
+      }, 500)
     }
   }
 

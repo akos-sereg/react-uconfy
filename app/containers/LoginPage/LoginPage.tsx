@@ -9,20 +9,19 @@ import { login } from './actions'
 import styles from './style.scss'
 import {Link} from "react-router-dom";
 import {getSignupLink} from "../../services/UrlService";
+import NotificationBar, {NotificationListener} from "../../components/NotificationBar/NotificationBar";
 
 type Props = {
-  dispatch: Function,
+  dispatch: Function
   isProcessing: boolean
-};
-
-type State = {
-  username: string,
+  loginErrorMessage: string
 };
 
 const LoginPage = (props: Props) => {
 
   const [loginForm, setLoginForm] = useState({ username: '', password: '' })
   const { isProcessing } = props
+  const notification = new NotificationListener()
 
   const handleSignIn = (event: any) => {
     event.preventDefault()
@@ -35,6 +34,11 @@ const LoginPage = (props: Props) => {
       handleSignIn(event)
     }
   }
+
+  if (props.loginErrorMessage && props.loginErrorMessage != '') {
+    notification.showMessage(props.loginErrorMessage)
+  }
+
 
   const handleTextChange = (event: any) => {
     switch (event.target.name) {
@@ -106,6 +110,8 @@ const LoginPage = (props: Props) => {
           </tr>
         </tbody>
       </table>
+
+      <NotificationBar handle={notification} />
     </div>
   );
 }

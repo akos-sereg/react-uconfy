@@ -22,8 +22,14 @@ const isProcessingSelector = () => createSelector(
   (globalState) => globalState.isProcessing
 );
 
+const loginErrorMessageSelector = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.loginErrorMessage
+)
+
 const mapStateToProps = createStructuredSelector({
-  isProcessing: isProcessingSelector()
+  isProcessing: isProcessingSelector(),
+  loginErrorMessage: loginErrorMessageSelector()
 });
 
 // ---------------------------------------------------------------------
