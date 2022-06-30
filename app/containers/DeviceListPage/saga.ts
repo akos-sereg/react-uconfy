@@ -3,14 +3,13 @@ import {
   devicesReceived, FETCH_DEVICES, fetechDevices
 } from './actions'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi';
-import * as toastr from 'toastr'
 import {getDeviceListUri, getHashPage, getMarketingPage, getRootPage} from "../../services/UrlService";
 import {setNavigation} from "../../components/Navigation/actions";
 
 export function *fetchDevices(action: any): any {
   const result = yield UconfyDevicesApi.instance.getDevices()
   if (!result.success) {
-    toastr['warning']('Server error, please try again')
+    // toastr['warning']('Server error, please try again')
     return
   }
 

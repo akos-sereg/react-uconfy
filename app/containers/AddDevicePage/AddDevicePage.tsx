@@ -6,7 +6,6 @@ import UconfyDevicesApi from '../../services/UconfyDevicesApi'
 import { getDeviceListUri } from '../../services/UrlService'
 import { createDevice } from './actions'
 import styles from './style.scss'
-import * as toastr from 'toastr'
 
 type Props = {
   dispatch: any,

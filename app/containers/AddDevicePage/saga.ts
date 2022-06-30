@@ -6,14 +6,13 @@ import {
   // devicesReceived
 } from './actions'
 import UconfyDevicesApi from '../../services/UconfyDevicesApi';
-import * as toastr from 'toastr'
 
 export function *createDevice(action: any): any {
   const result = yield UconfyDevicesApi.instance.createDevice(action.payload.name, action.payload.platform)
   if (result.success) {
     const devicesResult = yield UconfyDevicesApi.instance.getDevices()
     if (!devicesResult.success) {
-      toastr['warning']('Server error, please try again')
+      // toastr['warning']('Server error, please try again')
       return
     }
 

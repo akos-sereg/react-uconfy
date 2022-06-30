@@ -41,7 +41,6 @@ This will produce artifacts under ``build`` folder
 
 #### User Interface
 - Bootstrap 3
-- Toastr notifications
 
 ## Testing
 

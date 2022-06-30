@@ -34,7 +34,7 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'styles/theme.scss';
 
 import configureStore from './configureStore';
-import {getDeviceListUri, getMarketingPage, getRootPage} from "./services/UrlService";
+import {getDeviceListUri, getMarketingPage} from "./services/UrlService";
 import config from "./services/Config";
 import {login} from "./containers/LoginPage/actions";
 

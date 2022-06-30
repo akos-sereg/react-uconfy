@@ -28,6 +28,8 @@ const SignupPage = () => {
       const signupResponse = await UconfyLoginApi.instance.register(username, password)
       if (signupResponse.success) {
         location.href = getDeviceListUri()
+      } else {
+        // toastr["warning"]('Whoops, cant signup now, sorry. Try again later.')
       }
     } catch (error) {
       console.error(error)
