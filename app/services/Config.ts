@@ -48,4 +48,4 @@ const awsConfig = {
   demoUser: 'demouser@demo.de'
 }
 
-export default backendlessDevConfig
+export default devConfig

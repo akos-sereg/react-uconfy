@@ -12,6 +12,14 @@ const getMarketingPage = () => {
   return '/'
 }
 
+const getLoginLink = (includeRoot: boolean = true) => {
+  return includeRoot ? `${appRoot}#/signup` : `/login`
+}
+
+const getSignupLink = (includeRoot: boolean = true) => {
+  return includeRoot ? `${appRoot}#/signup` : `/signup`
+}
+
 const getRootPage = () => {
   return `${appRoot}#/`
 }
@@ -81,5 +89,7 @@ export {
   getHashPage,
   getSubpageFromUri,
   getRootPage,
-  getMarketingPage
+  getMarketingPage,
+  getSignupLink,
+  getLoginLink
 }

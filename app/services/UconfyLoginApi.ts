@@ -48,22 +48,41 @@ class UconfyLoginApi extends UconfyBackendApi {
   }
 
   async getMe() {
-      try {
-        const response = await axios.post(`${UconfyBackendApi.endpointUrl}/login/jwt`,
-          { jwtToken: UconfyBackendApi.getJwtToken() },
-          { timeout: UconfyBackendApi.requestTimeout });
+    try {
+      const response = await axios.post(`${UconfyBackendApi.endpointUrl}/login/jwt`,
+        { jwtToken: UconfyBackendApi.getJwtToken() },
+        { timeout: UconfyBackendApi.requestTimeout });
 
-        UconfyLoginApi.setUserData(response.data)
+      UconfyLoginApi.setUserData(response.data)
 
-        return {
-          success: true,
-          responseData: response.data,
-          responseStatus: response.status
-        };
-      } catch (error) {
-        return { success: false }
-      }
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      return { success: false }
     }
+  }
+
+  async register(username: string, password: string) {
+    try {
+      const response = await axios.post(`${UconfyBackendApi.endpointUrl}/login/signup`,
+        { email: username, password },
+        { timeout: UconfyBackendApi.requestTimeout });
+
+      UconfyBackendApi.setJwtToken(response.data.token)
+      UconfyLoginApi.setUserData(response.data)
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      }
+    } catch (error) {
+      return { success: false }
+    }
+  }
 }
 
 export default UconfyLoginApi

@@ -11,4 +11,5 @@ export interface User {
 export interface LoginApi {
   login(username: string, password: string): Promise<WrappedResponse<User>>
   getMe(): Promise<WrappedResponse<User>>
+  register(username: string, password: string): Promise<WrappedResponse<User>>
 }

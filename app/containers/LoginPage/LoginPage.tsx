@@ -7,6 +7,8 @@ import UconfyBackendApi from '../../services/UconfyBackendApi'
 import { setNavigation } from '../../components/Navigation/actions'
 import { login } from './actions'
 import styles from './style.scss'
+import {Link} from "react-router-dom";
+import {getSignupLink} from "../../services/UrlService";
 
 type Props = {
   dispatch: Function,
@@ -46,9 +48,9 @@ const LoginPage = (props: Props) => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Helmet>
-        <title>Main Page</title>
+        <title>uConfy - Login</title>
         <meta
           name="description"
           content="uConfy"
@@ -94,6 +96,12 @@ const LoginPage = (props: Props) => {
                 className="btn btn-default navbar-btn">
                 Sign in
               </button>
+              <p>
+                <a href={'#'}>Forgot password ...</a>
+              </p>
+              <p>
+                <Link to={getSignupLink(false)}>Sign up ...</Link>
+              </p>
             </td>
           </tr>
         </tbody>
