@@ -1,10 +1,7 @@
 import * as React from 'react'
-import { Component, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import TextInput from '../../components/TextInput'
-import UconfyBackendApi from '../../services/UconfyBackendApi'
-import { setNavigation } from '../../components/Navigation/actions'
 import {eraseLoginErrorMessage, login} from './actions'
 import styles from './style.scss'
 import {Link} from "react-router-dom";
