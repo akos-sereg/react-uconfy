@@ -9,7 +9,8 @@ import styles from './style.scss'
 type Props = {
   dispatch: any,
   fetchDevices: Function,
-  devicesData: any
+  devicesData: any,
+  lastSeenData: any
 };
 
 const DeviceListPage = (props: Props) => {
@@ -33,6 +34,7 @@ const DeviceListPage = (props: Props) => {
 
         {props.devicesData && <DeviceList
           items={props.devicesData.devices}
+          lastSeen={props.devicesData.deviceIdLastSeen}
           dispatch={props.dispatch}
           />}
 

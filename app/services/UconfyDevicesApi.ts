@@ -78,7 +78,7 @@ class UconfyDevicesApi extends UconfyBackendApi implements DevicesApi {
 
   async updateConfig(deviceId: string, items: any) {
     try {
-      const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config?origin=web`,
+      const response = await axios.put(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config`,
         { deviceId, items },
         {
           headers: UconfyBackendApi.getHeaders()
@@ -145,7 +145,7 @@ class UconfyDevicesApi extends UconfyBackendApi implements DevicesApi {
 
   async getDevice(deviceId: string) {
     try {
-      const response = await axios.get(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config`,
+      const response = await axios.get(`${UconfyBackendApi.endpointUrl}/device/${deviceId}/config?origin=web`,
         {
           headers: UconfyBackendApi.getHeaders(),
           timeout: UconfyBackendApi.requestTimeout
