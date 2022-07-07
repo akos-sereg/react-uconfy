@@ -49,7 +49,6 @@ const LoginPage = (props: Props) => {
   }
 
   const notificationClosed = () => {
-    console.log('--> notificationClosed')
     props.dispatch(eraseLoginErrorMessage())
   }
 

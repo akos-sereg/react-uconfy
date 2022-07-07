@@ -4,7 +4,17 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const config = require('../app/services/Config.ts')
+
+let config = {
+  appRoot: '/'
+}
+
+try {
+  config = require('../app/services/Config.ts')
+  console.log('using config: ' + config.default.name)
+} catch (error) {
+  console.log('unable to load config. this is not a problem as long as you are not running "npm run build"')
+}
 
 process.noDeprecation = true;
 
@@ -13,7 +23,7 @@ module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign({ // Compile into js/build.js
     path: path.resolve(process.cwd(), 'build'),
-    publicPath: config.publicPath,
+    publicPath: config.default.appRoot,
   }, options.output), // Merge with env dependent settings
   module: {
     rules: [

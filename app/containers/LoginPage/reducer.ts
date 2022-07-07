@@ -12,7 +12,6 @@ const initialState = fromJS({
 function loginReducer(state = initialState, action: any) {
   switch (action.type) {
     case ERASE_LOGIN_ERROR_MESSAGE:
-      console.log('--> erasing error message')
       return {
         ...state,
         loginErrorMessage: null

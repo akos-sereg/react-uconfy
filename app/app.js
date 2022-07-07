@@ -115,22 +115,27 @@ if (module.hot) {
 
 render();
 
-if (document.location.hash.indexOf('demologin=1') !== -1) {
-  store.dispatch(login(config.demoUser, ''))
+var isLocalhost = document.location.hostname == 'localhost' || document.location.hostname == '127.0.0.1'
+if (!document.location.protocol.startsWith('https') && config.forceHttps && !isLocalhost) {
+  console.log('force redirect to https')
+  document.location.href = document.location.href.replace('http://', 'https://')
 } else {
-  // autologin, if jwt token is available
-  if (UconfyBackendApi.getJwtToken()) {
-    UconfyLoginApi.instance.getMe()
-
-    // store requested location, so that later - once app state is loaded from backend - we can navigate there
-    // see DeviceListPage/saga.ts, fetchDevices
-    localStorage.setItem('requested_hash', document.location.hash)
-
-    // ... but first, navigate to device list page, so that device list can be fetched from backend first
-    document.location.href = getDeviceListUri()
+  if (document.location.hash.indexOf('demologin=1') !== -1) {
+    console.log('autologin with demo account')
+    store.dispatch(login(config.demoUser, ''))
   } else {
-    updateLocation();
+    // autologin, if jwt token is available
+    if (UconfyBackendApi.getJwtToken()) {
+      UconfyLoginApi.instance.getMe()
+
+      // store requested location, so that later - once app state is loaded from backend - we can navigate there
+      // see DeviceListPage/saga.ts, fetchDevices
+      localStorage.setItem('requested_hash', document.location.hash)
+
+      // ... but first, navigate to device list page, so that device list can be fetched from backend first
+      document.location.href = getDeviceListUri()
+    } else {
+      updateLocation();
+    }
   }
-
-
 }
