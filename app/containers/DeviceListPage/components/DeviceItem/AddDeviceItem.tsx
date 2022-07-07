@@ -12,7 +12,7 @@ const AddDeviceItem = (props: Props) => {
     document.location.href = getCreateDeviceUri()
   }
 
-  return <div className={`${styles.deviceItemContainer} ${styles.addDeviceItemContainer}`}
+  return <div className={styles.addDeviceItemContainer}
     onClick={handleClick}>
      Add new
   </div>

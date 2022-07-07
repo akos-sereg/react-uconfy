@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const config = require('../app/services/Config.ts')
 
 process.noDeprecation = true;
 
@@ -12,7 +13,7 @@ module.exports = (options) => ({
   entry: options.entry,
   output: Object.assign({ // Compile into js/build.js
     path: path.resolve(process.cwd(), 'build'),
-    publicPath: '/',
+    publicPath: config.publicPath,
   }, options.output), // Merge with env dependent settings
   module: {
     rules: [

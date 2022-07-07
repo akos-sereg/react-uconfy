@@ -2,7 +2,8 @@ const backendlessDevConfig = {
   appRoot: '/',
   endpointUrl: 'localStorage',
   requestTimeout: 10000,
-  demoUser: 'demouser@demo.de'
+  demoUser: 'demouser@demo.de',
+  publicPath: '/'
 }
 
 /**
@@ -13,7 +14,8 @@ const devConfig = {
   appRoot: '/',
   endpointUrl: 'http://127.0.0.1:8080/api',
   requestTimeout: 10000,
-  demoUser: 'demouser@demo.de'
+  demoUser: 'demouser@demo.de',
+  publicPath: '/'
 }
 
 /**
@@ -25,27 +27,30 @@ const localDockerConfig = {
   appRoot: '/webapp',
   endpointUrl: 'http://127.0.0.1:8080/api',
   requestTimeout: 10000,
-  demoUser: 'demouser@demo.de'
+  demoUser: 'demouser@demo.de',
+  publicPath: '/'
 }
 
 /**
  * config for heroku hosted service
  */
 const herokuConfig = {
-  appRoot: '/webapp',
+  appRoot: '/webapp/',
   endpointUrl: 'https://uconfy.herokuapp.com/api',
   requestTimeout: 10000,
-  demoUser: 'demouser@demo.de'
+  demoUser: 'demouser@demo.de',
+  publicPath: '/webapp'
 }
 
 /**
  * config for aws hosted infrastructure
  */
 const awsConfig = {
-  appRoot: '/webapp',
+  appRoot: '/webapp/',
   endpointUrl: 'http://uconfy-lb-1041773429.eu-west-2.elb.amazonaws.com/api',
   requestTimeout: 10000,
-  demoUser: 'demouser@demo.de'
+  demoUser: 'demouser@demo.de',
+  publicPath: '/webapp'
 }
 
-export default devConfig
+export default herokuConfig

@@ -19,6 +19,16 @@
 .addDeviceItemContainer {
   border: dashed 1px #d5d5d5;
   color: #d5d5d5;
+  width: 240px;
+  height: 140px;
+  border-radius: 6pt;
+  padding: 10px;
+  text-align: center;
+  padding-top: 65px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .addDeviceItemContainer:hover {
