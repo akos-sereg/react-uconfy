@@ -1,19 +1,20 @@
 .deviceItemContainer {
   width: 240px;
   height: 140px;
-  border: solid 1px #d5d5d5;
-  border-radius: 6pt;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 10px;
   text-align: center;
   padding-top: 35px;
   float: left;
   margin-right: 20px;
   margin-bottom: 20px;
+  font-size: 14pt;
+  color: #333333;
 }
 
 .deviceItemContainer:hover {
-  border: solid 1px #a6a6a6;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
 }
 
 .addDeviceItemContainer {
@@ -46,4 +47,17 @@
 
 .semiActive {
   background-color: beige;
+}
+
+.infoContainer {
+  margin-top: 15px;
+  color: #a6a6a6;
+  font-size: 8pt;
+  display: flex;
+  div {
+    width: 45%;
+    p {
+      color: #000000;
+    }
+  }
 }

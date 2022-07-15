@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { useDispatch } from 'react-redux'
-import {getDeviceListUri, getDeviceUri, getMarketingPage, getRootPage} from '../../../../services/UrlService'
+import {getDeviceListUri, getDeviceUri, getMarketingPage} from '../../../../services/UrlService'
 import { setNavigation } from '../../../../components/Navigation/actions'
 import styles from './style.scss'
 
@@ -56,10 +55,22 @@ const DeviceItem = (props: Props) => {
 
   return <div className={`${styles.deviceItemContainer} ${lastSeenClass}`} onClick={handleClick}>
     <b>{props.name}</b>
-    <br/>
-    <i>{props.platform}</i>
-    <br/>
-    last seen: {getLastSeenText()}
+
+    <div className={styles.infoContainer}>
+      <div>
+        last seen
+        <p>
+          {getLastSeenText()}
+        </p>
+      </div>
+      <div>
+        platform
+        <p>
+          {props.platform}
+        </p>
+      </div>
+    </div>
+
   </div>
 }
 

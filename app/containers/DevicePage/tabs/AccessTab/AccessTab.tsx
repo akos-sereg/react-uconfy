@@ -1,8 +1,9 @@
 import * as React from 'react'
-import CodeTemplates from "../../components/CodeTemplates";
-import DeviceDetails from "../../components/DeviceDetails";
-import {useState} from "react";
-import {deleteDevice} from "../../actions";
+import CodeTemplates from "../../components/CodeTemplates"
+import DeviceDetails from "../../components/DeviceDetails"
+import {useState} from "react"
+import {deleteDevice} from "../../actions"
+import {isMobile} from "../../../../services/Environment"
 
 interface Props {
   match: any,
@@ -24,7 +25,7 @@ const AccessTab = (props: Props) => {
   return <>
     <DeviceDetails match={props.match} dispatch={props.dispatch} device={props.currentDevice} />
 
-    <CodeTemplates match={props.match} />
+    {!isMobile() && <CodeTemplates match={props.match} />}
 
     <h3>Delete Device</h3>
     <p>

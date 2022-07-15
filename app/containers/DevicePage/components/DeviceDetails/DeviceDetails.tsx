@@ -5,7 +5,9 @@ import UconfyLoginApi from '../../../../services/UconfyLoginApi'
 import UconfyDevicesApi from '../../../../services/UconfyDevicesApi'
 import { DeviceDetails } from '../../../../model/DeviceDetails'
 import { devicesReceived } from '../../../DeviceListPage/actions'
-import styles from './style.scss'
+import stylesForWeb from './style.scss'
+import stylesForMobile from './style.mobile.scss'
+import {isMobile} from "../../../../services/Environment";
 
 interface Props {
   match: any,
@@ -19,6 +21,8 @@ const DeviceDetails = (props: Props) => {
   const [isDirty, setDirty] = useState(false)
   const deviceId = props.match.params.id
   const userData = UconfyLoginApi.getUserData()
+
+  const styles = isMobile() ? stylesForMobile : stylesForWeb
 
   const handleSave = async () => {
     try {
@@ -50,47 +54,38 @@ const DeviceDetails = (props: Props) => {
 
   return <>
     <h3>Access</h3>
-    <table className={styles.formTable}>
-    <tbody>
-      <tr>
-        <td>
-          DeviceID
-        </td>
-        <td>
-           API Key
-        </td>
-      </tr>
-      <tr>
-        <td>
+
+    <div className={styles.container}>
+      <div data-name={'box'}>
+        <label>Device ID</label>
+        <p>
           <TextInput disabled={true} name={'deviceId'} value={deviceId} onChange={() => {}} />
-        </td>
-        <td>
+        </p>
+      </div>
+      <div data-name={'box'}>
+        <label>API Key</label>
+        <p>
           <TextInput disabled={true} name={'apiKey'} value={userData != null ? userData.apiKey : ''} onChange={() => {}} />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Name
-        </td>
-        <td>
-           Platform
-        </td>
-      </tr>
-      <tr>
-        <td>
+        </p>
+      </div>
+      <div data-name={'box'}>
+        <label>Name</label>
+        <p>
           <TextInput name={'name'} value={name} onChange={(e) => { setName(e.target.value); setDirty(true); }} />
-        </td>
-        <td>
+        </p>
+      </div>
+      <div data-name={'box'}>
+        <label>Platform</label>
+        <p>
           <TextInput name={'platform'} value={platform} onChange={(e) => { setPlatform(e.target.value); setDirty(true);}} />
-        </td>
-      </tr>
-      <tr>
-        <td colSpan={2}>
-          <button disabled={!isDirty} type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
-        </td>
-      </tr>
-    </tbody>
-    </table>
+        </p>
+      </div>
+    </div>
+    <p>
+      <button disabled={!isDirty} type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
+    </p>
+
+
   </>
 }
 

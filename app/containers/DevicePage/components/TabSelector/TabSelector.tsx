@@ -1,6 +1,9 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Subpage } from '../../../../model/DevicePage'
+import styleForWeb from './style.scss'
+import styleForMobile from './style.mobile.scss'
+import {isMobile} from "../../../../services/Environment"
 
 interface Props {
   initialTab: Subpage
@@ -10,6 +13,7 @@ interface Props {
 const TabSelector = (props: Props) => {
 
   const [ subpage, setSubpage ] = useState(props.initialTab)
+  const styles = isMobile() ? styleForMobile : styleForWeb
 
   const handleNavigation = (event: any, targetSubpage: Subpage) => {
     event.preventDefault()
@@ -17,7 +21,7 @@ const TabSelector = (props: Props) => {
     props.handleTabChanged(targetSubpage)
   }
 
-  return <ul className="nav nav-tabs">
+  return <ul className={`nav nav-tabs ${styles.container}`}>
      <li
        role="presentation"
        className={subpage == Subpage.Access ? 'active' : ''}

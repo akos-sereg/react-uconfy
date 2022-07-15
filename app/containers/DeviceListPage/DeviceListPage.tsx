@@ -21,7 +21,7 @@ const DeviceListPage = (props: Props) => {
 
   return (
       <>
-        <h2>List of Device</h2>
+        <h2>List of Devices</h2>
         {props.devicesData ?
           <p>
             Registered devices can be found below.

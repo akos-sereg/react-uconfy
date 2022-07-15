@@ -1,12 +1,13 @@
-.formTable {
-  width: 100%;
-  margin-bottom: 20px;
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-  tr {
-    td {
-      width: 50%;
-      padding-right: 30px;
-      padding-bottom: 3px;
+  div[data-name='box'] {
+    width: 50%;
+
+    p {
+      width: 90%;
     }
   }
 }

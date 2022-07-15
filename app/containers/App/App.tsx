@@ -9,10 +9,14 @@ import AddDevicePage from '../AddDevicePage'
 import NotFoundPage from '../NotFoundPage'
 import Header from '../../components/Header'
 import Navigation from '../../components/Navigation'
-import styles from './style.scss'
+import stylesForWeb from './style.scss'
+import stylesForMobile from './style.mobile.scss'
 import SignupPage from "../SignupPage";
+import { isMobile } from "../../services/Environment";
 
 const App = () => {
+
+  const styles = isMobile() ? stylesForMobile : stylesForWeb
 
   return (
      <div>
