@@ -64,4 +64,4 @@ const awsConfig = {
   forceHttps: false
 }
 
-export default herokuConfig
+export default devConfig

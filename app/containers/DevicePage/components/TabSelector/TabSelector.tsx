@@ -34,7 +34,7 @@ const TabSelector = (props: Props) => {
        className={subpage == Subpage.Parameters ? 'active' : ''}
        onClick={(e) => handleNavigation(e, Subpage.Parameters)}
      >
-       <a href="#">Parameters</a>
+       <a href="#">{isMobile() ? 'Params' : 'Parameters'}</a>
      </li>
      <li
        role="presentation"
