@@ -53,41 +53,6 @@ openSansObserver.load().then(() => {
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
-const updateLocation = () => {
-  switch (document.location.hash) {
-    case '#/login':
-    case '#/':
-      store.dispatch(setNavigation([
-           { name: 'uConfy', uri: getMarketingPage() },
-           { name: 'Login' },
-         ]));
-      break;
-
-    case '#/signup':
-      store.dispatch(setNavigation([
-        { name: 'uConfy', uri: getMarketingPage() },
-        { name: 'Signup' },
-      ]));
-      break;
-
-    case '#/device/create':
-      store.dispatch(setNavigation([
-           { name: 'uConfy', uri: getMarketingPage() },
-           { name: 'Devices', uri: getDeviceListUri() },
-           { name: 'Create Device' },
-         ]));
-      break;
-
-    case '#/device':
-      store.dispatch(setNavigation([
-           { name: 'uConfy', uri: getMarketingPage() },
-           { name: 'Devices' },
-         ]));
-      break;
-  }
-}
-
-history.listen(updateLocation);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
@@ -134,8 +99,6 @@ if (!document.location.protocol.startsWith('https') && config.forceHttps && !isL
 
       // ... but first, navigate to device list page, so that device list can be fetched from backend first
       document.location.href = getDeviceListUri()
-    } else {
-      updateLocation();
     }
   }
 }

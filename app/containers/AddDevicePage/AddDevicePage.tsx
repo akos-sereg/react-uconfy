@@ -1,8 +1,9 @@
 import * as React from 'react'
-import { useState, useRef } from 'react'
-import { getDeviceListUri } from '../../services/UrlService'
+import {useState, useRef, useEffect} from 'react'
+import {getDeviceListUri, getMarketingPage} from '../../services/UrlService'
 import { createDevice } from './actions'
 import styles from './style.scss'
+import {setNavigation} from "../../components/Navigation/actions";
 
 type Props = {
   dispatch: any,
@@ -24,6 +25,14 @@ const AddDevicePage = (props: Props) => {
     event.preventDefault()
     document.location.href = getDeviceListUri()
   }
+
+  useEffect(() => {
+    props.dispatch(setNavigation([
+      { name: 'uConfy', uri: getMarketingPage() },
+      { name: 'Devices', uri: getDeviceListUri() },
+      { name: 'Create Device' },
+    ]));
+  }, [])
 
   return (
       <div className={styles.createDeviceContainer}>

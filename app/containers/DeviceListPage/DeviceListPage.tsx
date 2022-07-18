@@ -5,6 +5,8 @@ import DeviceList from './components/DeviceList'
 import AddDeviceItem from './components/DeviceItem/AddDeviceItem'
 import {fetechDevices} from "./actions";
 import styles from './style.scss'
+import {setNavigation} from "../../components/Navigation/actions";
+import {getMarketingPage} from "../../services/UrlService";
 
 type Props = {
   dispatch: any,
@@ -17,6 +19,11 @@ const DeviceListPage = (props: Props) => {
 
   useEffect(() => {
     props.dispatch(fetechDevices())
+
+    props.dispatch(setNavigation([
+      { name: 'uConfy', uri: getMarketingPage() },
+      { name: 'Devices' },
+    ]));
   }, [])
 
   return (
