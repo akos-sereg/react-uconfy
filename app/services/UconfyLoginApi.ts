@@ -83,6 +83,25 @@ class UconfyLoginApi extends UconfyBackendApi {
       return { success: false }
     }
   }
+
+  async completeSignup(username: string, registrationCode: string) {
+    try {
+      const response = await axios.post(`${UconfyBackendApi.endpointUrl}/login/verify-email`,
+        { email: username, registrationCode: parseInt(registrationCode) },
+        { timeout: UconfyBackendApi.requestTimeout });
+
+      UconfyBackendApi.setJwtToken(response.data.token)
+      UconfyLoginApi.setUserData(response.data)
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      }
+    } catch (error) {
+      return { success: false }
+    }
+  }
 }
 
 export default UconfyLoginApi

@@ -30,7 +30,12 @@ const Header = () => {
 
           </tr>
       </tbody>
-    </table> : <div className={styles.title}>uConfy</div>
+    </table> :
+      <>
+        <div className={styles.title}>uConfy</div>
+        <a className={styles.logoutButton} onClick={handleLogout} tabIndex={0}>Logout</a>
+      </>
+
   )
 }
 

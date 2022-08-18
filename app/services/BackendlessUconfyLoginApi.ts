@@ -32,6 +32,12 @@ class BackendlessUconfyLoginApi implements LoginApi {
 
   async register(username: string, password: string) {
     return {
+      success: true
+    }
+  }
+
+  async completeSignup(username: string, registrationCode: string) {
+    return {
       success: true,
       responseData: this.user,
       responseStatus: 200

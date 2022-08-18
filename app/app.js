@@ -95,7 +95,13 @@ if (!document.location.protocol.startsWith('https') && config.forceHttps && !isL
 
       // store requested location, so that later - once app state is loaded from backend - we can navigate there
       // see DeviceListPage/saga.ts, fetchDevices
-      localStorage.setItem('requested_hash', document.location.hash)
+      if (document.location.hash === '#/') {
+        // make sure that we land on the device list page after auto login
+        localStorage.setItem('requested_hash', '#/device')
+      } else {
+        // specific location where user wants to land after auto login, eg. #/device/{id}
+        localStorage.setItem('requested_hash', document.location.hash)
+      }
 
       // ... but first, navigate to device list page, so that device list can be fetched from backend first
       document.location.href = getDeviceListUri()

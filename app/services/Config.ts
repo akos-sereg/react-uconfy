@@ -46,7 +46,7 @@ const localDockerConfig = {
 const herokuConfig = {
   name: 'herokuConfig',
   appRoot: '/webapp/',
-  endpointUrl: 'https://uconfy.herokuapp.com/api',
+  endpointUrl: 'https://www.micoconfy.com/api',
   requestTimeout: 10000,
   demoUser: 'demouser@demo.de',
   forceHttps: true
