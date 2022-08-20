@@ -46,7 +46,7 @@ const localDockerConfig = {
 const herokuConfig = {
   name: 'herokuConfig',
   appRoot: '/webapp/',
-  endpointUrl: 'https://www.micoconfy.com/api',
+  endpointUrl: 'https://www.microconfy.com/api',
   requestTimeout: 10000,
   demoUser: 'demouser@demo.de',
   forceHttps: true
@@ -54,6 +54,7 @@ const herokuConfig = {
 
 /**
  * config for aws hosted infrastructure
+ * (hosting on aws was an experimental project)
  */
 const awsConfig = {
   name: 'awsConfig',
@@ -64,4 +65,5 @@ const awsConfig = {
   forceHttps: false
 }
 
-export default devConfig
+// export default devConfig
+export default herokuConfig

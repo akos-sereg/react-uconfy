@@ -26,10 +26,10 @@ const App = () => {
 
        <div className={styles.center}>
          {!isLoginPage && (
-           <>
+           <div className={styles.headerAndNavigation}>
              <Header />
              <Navigation navigationPath={[{ name: 'uConfy', uri: '/#/' }]} />
-           </>
+           </div>
          )}
 
          <Switch>

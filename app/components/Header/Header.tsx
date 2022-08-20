@@ -5,6 +5,7 @@ import stylesForWeb from './style.scss'
 import stylesForMobile from './style.mobile.scss'
 import {getMarketingPage} from "../../services/UrlService";
 import {isMobile} from "../../services/Environment";
+import UconfyLoginApi from "../../services/UconfyLoginApi";
 
 const Header = () => {
   const styles = isMobile() ? stylesForMobile : stylesForWeb
@@ -13,6 +14,8 @@ const Header = () => {
     UconfyBackendApi.setJwtToken(null)
     location.href = '/#/'
   }
+
+  const userData = UconfyLoginApi.getUserData()
 
   return (!isMobile() ?
     <table width="100%">
@@ -26,8 +29,10 @@ const Header = () => {
                 <a className={styles.nav_link} href={getMarketingPage()}>Home</a>
                 <a className={styles.nav_link} href="https://github.com/akos-sereg/esp32-uconfy-component/wiki" target="_blank">Documentation</a>
                 <a className={styles.nav_link} onClick={handleLogout} tabIndex={0}>Logout</a>
+                <p className={styles.loggedInAs}>
+                  Logged in as <span>{userData && userData.email}</span>
+                </p>
               </td>
-
           </tr>
       </tbody>
     </table> :
