@@ -4,6 +4,7 @@ Frontend app for uconfy.herokuapp.com
 
 ## Usage
 ```
+$ nvm use 12.13.1
 $ npm install
 $ npm start
 ```

@@ -9,7 +9,7 @@ Your device might want to pull the configuration periodically, or upon init.
 `
 
 
-const postLogs = `curl --location --request POST '{apiUrl}/api/device/{deviceId}/logs' \\
+const postLogs = `curl --location --request POST '{apiUrl}/device/{deviceId}/logs' \\
 --header 'Authorization: apikey {apiKey}' \\
 --header 'Content-Type: application/json' \\
 --data-raw '{ "Logs": "CkRldmljZSBzdGFydGVkCkRldmljZSBzdGFydGVkCkRldmljZSBzdGFydGVkCkRldmljZSBzdGFydGVkCkRldmljZSBzdGFydGVkCkRldmljZSBzdGFydGVkCkRldmljZSBzdGFydGVk"}'
