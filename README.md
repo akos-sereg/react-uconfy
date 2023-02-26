@@ -1,6 +1,6 @@
 # react-uconfy
 
-Frontend app for uconfy.herokuapp.com
+Frontend app for https://www.microconfy.com
 
 ## Usage
 ```
@@ -39,6 +39,7 @@ This will produce artifacts under ``build`` folder
 - Sourcemap
 - Jest
 - ESLint - ``npm run lint``
+- For serverless configuration, use 'backendlessDevConfig' in `app/services/Config.ts` 
 
 #### User Interface
 - Bootstrap 3

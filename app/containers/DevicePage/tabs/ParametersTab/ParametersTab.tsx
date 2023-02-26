@@ -17,6 +17,7 @@ const ParametersTab = (props: Props) => {
 
   const [newKey, setNewKey] = useState('')
   const [newValue, setNewValue] = useState('')
+  const [editingState, setEditingState] = useState({ key: '', value: '', isEditing: false })
 
   const handleAdd = async () => {
     if (newKey === '' || newValue === '') {
@@ -37,6 +38,30 @@ const ParametersTab = (props: Props) => {
     props.dispatch(fetchDeviceDetails(props.deviceId))
   }
 
+  const handleEdit = async (key: string) => {
+    const configItems = props.deviceConfig.items.filter((configItem: any) => configItem.key == key)
+    if (configItems.length !== 1) {
+      return
+    }
+
+    setEditingState({ key, value: configItems[0].value, isEditing: true })
+  }
+
+  const handleUpdate = async (key: string) => {
+    const newConfigItems: any = []
+    props.deviceConfig.items.forEach((configItem: any) => {
+      if (configItem.key === key) {
+        newConfigItems.push({ key, value: editingState.value })
+      } else {
+        newConfigItems.push(configItem)
+      }
+    })
+
+    await UconfyDevicesApi.instance.updateConfig(props.deviceId, newConfigItems)
+    props.dispatch(fetchDeviceDetails(props.deviceId))
+    setEditingState({ key: '', value: '', isEditing: false })
+  }
+
   return <>
     <h3>Parameters</h3>
     <p>
@@ -54,9 +79,18 @@ const ParametersTab = (props: Props) => {
       {props.deviceConfig && props.deviceConfig.items && props.deviceConfig.items.map((configItem: any) => (
         <tr key={configItem.key}>
           <td className={styles.keyCell}>{configItem.key}</td>
-          <td className={styles.valueCell}>{configItem.value}</td>
+          <td className={styles.valueCell}>
+            {editingState.isEditing && editingState.key === configItem.key ?
+              <TextInput value={editingState.value} name={'editingConfigItemValue'} onChange={(e) => setEditingState({ ...editingState, value: e.target.value })} />
+              : configItem.value}
+          </td>
           <td>
-            <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleDelete(configItem.key)}>Delete</button>
+            {editingState.isEditing ?
+             <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleUpdate(configItem.key)}>Update</button>
+             : <div>
+                <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleDelete(configItem.key)}>Delete</button>
+                <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleEdit(configItem.key)}>Edit</button>
+              </div>}
           </td>
         </tr>
       ))}
