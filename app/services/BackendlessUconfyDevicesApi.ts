@@ -1,8 +1,8 @@
 import {Device, DeviceConfigItem, DevicesApi} from "./api/DevicesApi";
 import {USER_ID} from "./BackendlessUconfyLoginApi";
+import BackendlessUconfyApi from "./BackendlessUconfyApi";
 
-class BackendlessUconfyDevicesApi implements DevicesApi {
-
+class BackendlessUconfyDevicesApi extends BackendlessUconfyApi implements DevicesApi {
   async getDevices() {
     const emptyDeviceList: Array<Device> = []
     let devices:  Array<Device> = emptyDeviceList
@@ -10,6 +10,7 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
       devices = JSON.parse(localStorage.getItem('devices'))
     }
 
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: {
@@ -23,6 +24,8 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
 
   async getLogs(deviceId: string) {
     const logEntries = localStorage.getItem('logs') ? JSON.parse(localStorage.getItem('logs')) : []
+
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: logEntries,
@@ -41,6 +44,7 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
 
     localStorage.setItem('devices', JSON.stringify(devices))
 
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: {},
@@ -59,6 +63,7 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
 
     localStorage.setItem(`device_config_${deviceId}`, JSON.stringify(deviceConfig))
 
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: {},
@@ -81,6 +86,7 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
 
     localStorage.setItem('devices', JSON.stringify(devices))
 
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: {},
@@ -100,6 +106,7 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
 
     localStorage.setItem('devices', JSON.stringify(newDevices))
 
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: {},
@@ -120,6 +127,7 @@ class BackendlessUconfyDevicesApi implements DevicesApi {
       }
     }
 
+    await this.fakeServiceLatency()
     return {
       success: true,
       responseData: {

@@ -17,7 +17,7 @@ const ParametersTab = (props: Props) => {
 
   const [newKey, setNewKey] = useState('')
   const [newValue, setNewValue] = useState('')
-  const [editingState, setEditingState] = useState({ key: '', value: '', isEditing: false })
+  const [editingState, setEditingState] = useState({ key: '', value: '', isEditing: false, isUpdatingOnService: false })
 
   const handleAdd = async () => {
     if (newKey === '' || newValue === '') {
@@ -44,7 +44,7 @@ const ParametersTab = (props: Props) => {
       return
     }
 
-    setEditingState({ key, value: configItems[0].value, isEditing: true })
+    setEditingState({ key, value: configItems[0].value, isEditing: true, isUpdatingOnService: false })
   }
 
   const handleUpdate = async (key: string) => {
@@ -57,9 +57,10 @@ const ParametersTab = (props: Props) => {
       }
     })
 
+    setEditingState({ ...editingState, isUpdatingOnService: true })
     await UconfyDevicesApi.instance.updateConfig(props.deviceId, newConfigItems)
     props.dispatch(fetchDeviceDetails(props.deviceId))
-    setEditingState({ key: '', value: '', isEditing: false })
+    setEditingState({ key: '', value: '', isEditing: false, isUpdatingOnService: false })
   }
 
   return <>
@@ -76,7 +77,7 @@ const ParametersTab = (props: Props) => {
       </tr>
       </thead>
       <tbody>
-      {props.deviceConfig && props.deviceConfig.items && props.deviceConfig.items.map((configItem: any) => (
+      {props.deviceConfig && !editingState.isUpdatingOnService && props.deviceConfig.items && props.deviceConfig.items.map((configItem: any) => (
         <tr key={configItem.key}>
           <td className={styles.keyCell}>{configItem.key}</td>
           <td className={styles.valueCell}>
@@ -86,7 +87,7 @@ const ParametersTab = (props: Props) => {
           </td>
           <td>
             {editingState.isEditing && editingState.key === configItem.key ?
-             <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleUpdate(configItem.key)}>Update</button>
+             <button type="button" disabled={editingState.isUpdatingOnService} className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleUpdate(configItem.key)}>Update</button>
              : <div>
                 <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleDelete(configItem.key)}>Delete</button>
                 <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleEdit(configItem.key)}>Edit</button>
@@ -94,7 +95,7 @@ const ParametersTab = (props: Props) => {
           </td>
         </tr>
       ))}
-      {!props.deviceConfig &&
+      {!props.deviceConfig || editingState.isUpdatingOnService &&
         <tr>
           <td className={styles.loadingTd}><img src={loadingGif} /> loading ...</td>
           <td></td>
