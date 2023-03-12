@@ -85,7 +85,7 @@ const ParametersTab = (props: Props) => {
               : configItem.value}
           </td>
           <td>
-            {editingState.isEditing ?
+            {editingState.isEditing && editingState.key === configItem.key ?
              <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleUpdate(configItem.key)}>Update</button>
              : <div>
                 <button type="button" className={`btn-sm btn-primary ${styles.configItemBtn}`} onClick={() => handleDelete(configItem.key)}>Delete</button>
