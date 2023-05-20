@@ -23,7 +23,7 @@ class BackendlessUconfyDevicesApi extends BackendlessUconfyApi implements Device
   }
 
   async getLogs(deviceId: string) {
-    const logEntries = localStorage.getItem('logs') ? JSON.parse(localStorage.getItem('logs')) : []
+    const logEntries = ['Hello World 1', 'Hello World 2', 'Hello World 3']
 
     await this.fakeServiceLatency()
     return {

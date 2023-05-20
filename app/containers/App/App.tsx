@@ -12,6 +12,7 @@ import Navigation from '../../components/Navigation'
 import stylesForWeb from './style.scss'
 import stylesForMobile from './style.mobile.scss'
 import { isMobile } from "../../services/Environment";
+import StatusPage from "../StatusPage/StatusPage";
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
 
          <Switch>
            <Route exact path="/" component={LoginPage} />
+           <Route exact path="/status" component={StatusPage} />
            <Route exact path="/login" component={LoginPage} />
            <Route exact path="/signup" component={LoginPage} />
            <Route exact path="/device/create" component={AddDevicePage} />

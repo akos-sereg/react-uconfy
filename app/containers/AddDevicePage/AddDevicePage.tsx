@@ -44,15 +44,15 @@ const AddDevicePage = (props: Props) => {
 
         <div className={`input-group ${styles.formItem}`}>
           <span className={`input-group-addon ${styles.fieldName}`} id="name">Name</span>
-          <input type="text" ref={nameEl} className={`form-control ${styles.fieldValue}`} placeholder="Name" aria-describedby="name" />
+          <input data-automation-id={'create-device-name'} type="text" ref={nameEl} className={`form-control ${styles.fieldValue}`} placeholder="Name" aria-describedby="name" />
         </div>
 
         <div className={`input-group ${styles.formItem}`}>
           <span className={`input-group-addon ${styles.fieldName}`} id="platform">Platform</span>
-          <input type="text" ref={platformEl} className={`form-control ${styles.fieldValue}`} placeholder="Platform" aria-describedby="platform" />
+          <input data-automation-id={'create-device-platform'} type="text" ref={platformEl} className={`form-control ${styles.fieldValue}`} placeholder="Platform" aria-describedby="platform" />
         </div>
 
-        <button disabled={isCreating} type="button" className={`btn btn-primary ${styles.actionButton}`} onClick={handleCreate}>Create</button>
+        <button data-automation-id={'create-device-button'}  disabled={isCreating} type="button" className={`btn btn-primary ${styles.actionButton}`} onClick={handleCreate}>Create</button>
         <button type="button" className={`btn btn-default ${styles.actionButton}`} onClick={handleCancel}>Cancel</button>
       </div>
     );

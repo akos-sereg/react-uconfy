@@ -16,7 +16,6 @@ const ConsoleTab = (props: Props) => {
 
   useEffect(() => {
     const pollLogsTask = async () => {
-      consoleEl.current.innerHTML = 'loading ...'
       const logs = await UconfyDevicesApi.instance.getLogs(props.deviceId)
       if (consoleEl.current == null) {
         return
@@ -27,9 +26,9 @@ const ConsoleTab = (props: Props) => {
     }
 
     pollLogsTask()
-    const intervalHandler = setInterval(pollLogsTask,pollInterval * 1000)
+    const intervalHandler = setInterval(pollLogsTask, pollInterval * 1000)
     return () => clearInterval(intervalHandler)
-  })
+  }, [pollInterval])
 
   return <>
     <h3>Console</h3>

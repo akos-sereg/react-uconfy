@@ -12,10 +12,12 @@ const AddDeviceItem = (props: Props) => {
     document.location.href = getCreateDeviceUri()
   }
 
-  return <div className={styles.addDeviceItemContainer}
-    onClick={handleClick}>
-     Add new
-  </div>
+  return (<div className={styles.addDeviceItemContainer}
+      data-automation-id={'add-device-button'}
+      onClick={handleClick}>
+      Add new
+    </div>
+  );
 }
 
 export default AddDeviceItem

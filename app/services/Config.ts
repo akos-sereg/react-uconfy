@@ -66,4 +66,5 @@ const awsConfig = {
 }
 
 // export default devConfig
-export default herokuConfig
+// export default herokuConfig
+export default backendlessDevConfig

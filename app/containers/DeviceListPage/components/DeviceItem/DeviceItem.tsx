@@ -54,7 +54,7 @@ const DeviceItem = (props: Props) => {
   }
 
   return <div className={`${styles.deviceItemContainer} ${lastSeenClass}`} onClick={handleClick}>
-    <b>{props.name}</b>
+    <b data-automation-id={'registered-device-name'}>{props.name}</b>
 
     <div className={styles.infoContainer}>
       <div>
@@ -65,7 +65,7 @@ const DeviceItem = (props: Props) => {
       </div>
       <div>
         platform
-        <p>
+        <p data-automation-id={'registered-device-platform'}>
           {props.platform}
         </p>
       </div>
