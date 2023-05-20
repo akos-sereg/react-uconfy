@@ -31,7 +31,7 @@ const AccessTab = (props: Props) => {
     <p>
       By deleting the device, your device will no longer be able to push/fetch data.
     </p>
-    <button disabled={isDeleting} type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
+    <button data-automation-id={'delete-device-button'} disabled={isDeleting} type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
   </>
 }
 

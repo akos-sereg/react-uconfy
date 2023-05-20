@@ -29,6 +29,27 @@ describe('Device Management', () => {
     cy.get(PageMap.DeviceListPage.RegisteredDeviceItemPlatform).contains(devicePlatform)
   })
 
+  it('is able to delete device', () => {
+
+    cy.visit('http://localhost:3000/#/device')
+    cy.get(PageMap.DeviceListPage.AddDeviceButton).click()
+
+    const deviceName = 'My Project'
+    const devicePlatform = 'ESP32'
+    cy.get(PageMap.CreateDevicePage.Name).type(deviceName)
+    cy.get(PageMap.CreateDevicePage.Platform).type(devicePlatform)
+    cy.get(PageMap.CreateDevicePage.CreateButton).click()
+
+    cy.url().should('eq', 'http://localhost:3000/#/device')
+    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).should('have.length', 1)
+
+    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).click()
+    cy.on('window:confirm', () => true);
+    cy.get(PageMap.UpdateDevicePage.DeleteButton).click()
+    cy.url().should('eq', 'http://localhost:3000/#/device')
+    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).should('have.length', 0)
+  })
+
   it('is able to update device', () => {
     cy.visit('http://localhost:3000/#/device')
     cy.get(PageMap.DeviceListPage.AddDeviceButton).click()

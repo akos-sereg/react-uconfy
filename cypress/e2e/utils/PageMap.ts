@@ -17,7 +17,8 @@ const PageMap: any = {
   },
   UpdateDevicePage: {
     Name: 'input[data-automation-id="device-update-name"]',
-    UpdateButton: 'button[data-automation-id="update-device-button"]'
+    UpdateButton: 'button[data-automation-id="update-device-button"]',
+    DeleteButton: 'button[data-automation-id="delete-device-button"]'
   }
 }
 
