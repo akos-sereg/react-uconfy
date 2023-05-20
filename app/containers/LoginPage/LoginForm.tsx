@@ -72,6 +72,7 @@ const LoginForm = (props: Props) => {
     </div>
 
     <button
+      data-automation-id={'login-button'}
       disabled={isProcessing}
       onClick={(e) => handleSignIn(e)}
       type="button"

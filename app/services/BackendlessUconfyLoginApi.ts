@@ -1,6 +1,7 @@
 import {LoginApi} from "./api/LoginApi";
 import UconfyBackendApi from "./UconfyBackendApi";
 import BackendlessUconfyApi from "./BackendlessUconfyApi";
+import UconfyLoginApi from "./UconfyLoginApi";
 
 export const USER_ID = 1000
 
@@ -16,6 +17,7 @@ class BackendlessUconfyLoginApi extends BackendlessUconfyApi implements LoginApi
 
   async login(username: string, password: string) {
     UconfyBackendApi.setJwtToken(this.user.token)
+    UconfyLoginApi.setUserData(this.user)
 
     await this.fakeServiceLatency()
     return {

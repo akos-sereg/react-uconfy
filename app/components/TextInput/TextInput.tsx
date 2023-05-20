@@ -11,10 +11,11 @@ type Props = {
   error?: any,
   type?: string,
   disabled?: boolean,
-  maxLength?: number
+  maxLength?: number,
+  automationId?: string
 };
 
-const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, disabled, error, maxLength }) => {
+const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholder, value, disabled, error, maxLength, automationId }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += ' has-error';
@@ -27,6 +28,7 @@ const TextInput: FC<Props> = ({ name, label, type, onChange, onKeyUp, placeholde
       {label != null && (<label htmlFor={name}>{label}</label>)}
       <div className="field">
         <input
+          data-automation-id={automationId}
           disabled={disabled}
           type={type ? type : 'text'}
           name={name}

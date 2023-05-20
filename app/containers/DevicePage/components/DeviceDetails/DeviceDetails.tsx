@@ -71,7 +71,7 @@ const DeviceDetails = (props: Props) => {
       <div data-name={'box'}>
         <label>Name</label>
         <p>
-          <TextInput name={'name'} value={name} onChange={(e) => { setName(e.target.value); setDirty(true); }} />
+          <TextInput automationId={'device-update-name'} name={'name'} value={name} onChange={(e) => { setName(e.target.value); setDirty(true); }} />
         </p>
       </div>
       <div data-name={'box'}>
@@ -82,7 +82,7 @@ const DeviceDetails = (props: Props) => {
       </div>
     </div>
     <p>
-      <button disabled={!isDirty} type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
+      <button data-automation-id={'update-device-button'} disabled={!isDirty} type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
     </p>
 
 

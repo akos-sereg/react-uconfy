@@ -9,7 +9,7 @@ $ npm install
 $ npm start
 ```
 
-Then open http://localhost:3000/
+Then open http://localhost:3000/#/login
 
 By default, `backendlessDevConfig` is being used, which means you can simply log in by clicking "Sign in" button. There is 
 no need to fill username/password.

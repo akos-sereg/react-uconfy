@@ -15,6 +15,7 @@ class UconfyLoginApi extends UconfyBackendApi {
   static instance = config.endpointUrl === 'localStorage' ? new BackendlessUconfyLoginApi() : new UconfyLoginApi()
 
   static setUserData(userData: UserData) {
+    console.log('setUserData into local storage')
     localStorage.setItem('userData', JSON.stringify(userData))
   }
 
