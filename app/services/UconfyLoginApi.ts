@@ -1,6 +1,6 @@
 import UconfyBackendApi from './UconfyBackendApi'
 import config from './Config'
-import axios from 'axios'
+import axios from '../react-offline-mode/src/axios-spy'
 import BackendlessUconfyLoginApi from "./BackendlessUconfyLoginApi";
 
 export interface UserData {

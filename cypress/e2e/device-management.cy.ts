@@ -11,9 +11,11 @@ describe('Device Management', () => {
     cy.get(PageMap.StatusPage.ServerConfig).contains('backendlessDevConfig')
   })
 
-  it('is able to create device', () => {
+  it('is able to create & update & delete device', () => {
 
     cy.visit('http://localhost:3000/#/device')
+
+    // create
     cy.get(PageMap.DeviceListPage.AddDeviceButton).click()
 
     const deviceName = 'My Project'
@@ -27,42 +29,8 @@ describe('Device Management', () => {
 
     cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).contains(deviceName)
     cy.get(PageMap.DeviceListPage.RegisteredDeviceItemPlatform).contains(devicePlatform)
-  })
 
-  it('is able to delete device', () => {
-
-    cy.visit('http://localhost:3000/#/device')
-    cy.get(PageMap.DeviceListPage.AddDeviceButton).click()
-
-    const deviceName = 'My Project'
-    const devicePlatform = 'ESP32'
-    cy.get(PageMap.CreateDevicePage.Name).type(deviceName)
-    cy.get(PageMap.CreateDevicePage.Platform).type(devicePlatform)
-    cy.get(PageMap.CreateDevicePage.CreateButton).click()
-
-    cy.url().should('eq', 'http://localhost:3000/#/device')
-    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).should('have.length', 1)
-
-    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).click()
-    cy.on('window:confirm', () => true);
-    cy.get(PageMap.UpdateDevicePage.DeleteButton).click()
-    cy.url().should('eq', 'http://localhost:3000/#/device')
-    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).should('have.length', 0)
-  })
-
-  it('is able to update device', () => {
-    cy.visit('http://localhost:3000/#/device')
-    cy.get(PageMap.DeviceListPage.AddDeviceButton).click()
-
-    const deviceName = 'My Project'
-    const devicePlatform = 'ESP32'
-    cy.get(PageMap.CreateDevicePage.Name).type(deviceName)
-    cy.get(PageMap.CreateDevicePage.Platform).type(devicePlatform)
-    cy.get(PageMap.CreateDevicePage.CreateButton).click()
-
-    cy.url().should('eq', 'http://localhost:3000/#/device')
-    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).should('have.length', 1)
-
+    // update
     cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).click()
     cy.get(PageMap.UpdateDevicePage.Name).type(' Updated')
     cy.get(PageMap.UpdateDevicePage.UpdateButton).click()
@@ -72,5 +40,12 @@ describe('Device Management', () => {
 
     cy.visit('http://localhost:3000/#/device')
     cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).contains(`${deviceName} Updated`)
+
+    // delete
+    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).click()
+    cy.on('window:confirm', () => true);
+    cy.get(PageMap.UpdateDevicePage.DeleteButton).click()
+    cy.url().should('eq', 'http://localhost:3000/#/device')
+    cy.get(PageMap.DeviceListPage.RegisteredDeviceItemName).should('have.length', 0)
   })
 })
