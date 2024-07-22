@@ -1,5 +1,4 @@
 import { WrappedResponse } from "./ServerApi";
-import { GetDeviceResponse, GetDevicesResponse } from "./DevicesApi";
 
 export interface SendCommandResponse {
 
@@ -10,6 +9,16 @@ export interface DeviceCommand {
   parameter: string;
 }
 
+export interface RegisteredDeviceCommand {
+  command: string;
+  parameter: string;
+  id: number;
+  deviceId: string;
+  createdAt: string;
+  processedAt: string;
+}
+
 export interface CommandApi {
   sendCommand(deviceId: string, command: DeviceCommand): Promise<WrappedResponse<SendCommandResponse>>
+  getRecentCommands(deviceId: string): Promise<WrappedResponse<Array<RegisteredDeviceCommand>>>
 }

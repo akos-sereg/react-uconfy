@@ -4,7 +4,7 @@ import axios from 'axios';
 import {getRootPage} from "./UrlService";
 import config from './Config'
 import {WrappedResponse} from "./api/ServerApi";
-import { CommandApi, DeviceCommand, SendCommandResponse } from "./api/CommandApi";
+import { CommandApi, DeviceCommand, RegisteredDeviceCommand, SendCommandResponse } from "./api/CommandApi";
 import BackendlessUconfyCommandApi from "./BackendlessUconfyCommandApi";
 
 class UconfyCommandApi extends UconfyBackendApi implements CommandApi {
@@ -17,6 +17,27 @@ class UconfyCommandApi extends UconfyBackendApi implements CommandApi {
     try {
       const response = await axios.post(`${UconfyBackendApi.endpointUrl}/command/${deviceId}`,
         command,
+        {
+          headers: UconfyBackendApi.getHeaders()
+        });
+
+      return {
+        success: true,
+        responseData: response.data,
+        responseStatus: response.status
+      };
+    } catch (error) {
+      if (error.response.status === 401) {
+        document.location.href = getRootPage()
+      }
+
+      return { success: false }
+    }
+  }
+
+  async getRecentCommands(deviceId: string): Promise<WrappedResponse<Array<RegisteredDeviceCommand>>> {
+    try {
+      const response = await axios.get(`${UconfyBackendApi.endpointUrl}/command/${deviceId}`,
         {
           headers: UconfyBackendApi.getHeaders()
         });
