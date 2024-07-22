@@ -26,6 +26,7 @@ const App = () => {
          <meta name="description" content="uConfy" />
        </Helmet>
 
+       { /* when enabling, also import axios-spy in services instead of axios */ }
        { /* <OfflineModeDevToolsWidget quotaInMb={ 5 } /> */ }
 
        <div className={styles.center}>
