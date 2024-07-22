@@ -66,6 +66,7 @@ const DevicePage = (props: Props) => {
 
         {subpage == Subpage.Command && (<>
           <CommandTab
+            deviceId={deviceId}
             match={props.match}
             dispatch={props.dispatch}
           />
