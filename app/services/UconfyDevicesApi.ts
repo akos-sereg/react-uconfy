@@ -1,5 +1,6 @@
 import UconfyBackendApi from './UconfyBackendApi'
-import axios from '../react-offline-mode/src/axios-spy'
+// import axios from '../react-offline-mode/src/axios-spy'
+import axios from 'axios';
 import {getRootPage} from "./UrlService";
 import config from './Config'
 import {DevicesApi, GetDevicesResponse} from "./api/DevicesApi";

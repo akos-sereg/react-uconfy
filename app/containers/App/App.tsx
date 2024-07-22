@@ -14,7 +14,6 @@ import stylesForMobile from './style.mobile.scss'
 import { isMobile } from "../../services/Environment";
 import StatusPage from "../StatusPage/StatusPage";
 import OfflineModeDevToolsWidget from '../../react-offline-mode/src/OfflineModeDevToolsWidget';
-import axios from "axios";
 
 const App = () => {
 
@@ -27,7 +26,7 @@ const App = () => {
          <meta name="description" content="uConfy" />
        </Helmet>
 
-       <OfflineModeDevToolsWidget quotaInMb={ 5 } />
+       { /* <OfflineModeDevToolsWidget quotaInMb={ 5 } /> */ }
 
        <div className={styles.center}>
          {!isLoginPage && (
