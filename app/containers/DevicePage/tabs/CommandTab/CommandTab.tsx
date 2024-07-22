@@ -13,9 +13,13 @@ interface Props {
 const CommandTab = (props: Props) => {
   const [command, setCommand] = useState('');
   const [parameter, setParameter] = useState('');
+  const [commandSent, setCommandSent] = useState(false);
 
-  const sendCommand = () => {
-    UconfyCommandApi.instance.sendCommand(props.deviceId, { command, parameter })
+  const sendCommand = async () => {
+    await UconfyCommandApi.instance.sendCommand(props.deviceId, { command, parameter })
+    setCommandSent(true);
+    setCommand('');
+    setParameter('');
   };
 
   return <div className={styles.container}>
@@ -28,13 +32,19 @@ const CommandTab = (props: Props) => {
       <div>
         <div className={styles.label}>Command</div>
         <div className={styles.inputField}>
-          <TextInput name="command" onChange={(e) => setCommand(e.target.value)} />
+          <TextInput value={command} name="command" onChange={(e) => {
+            setCommand(e.target.value);
+            setCommandSent(false);
+          }} />
         </div>
       </div>
       <div>
         <span className={styles.label}>Parameter</span> (Optional)
         <div className={styles.inputFieldParameter}>
-          <TextInput name="parameter" onChange={(e) => setParameter(e.target.value)} />
+          <TextInput value={parameter} name="parameter" onChange={(e) => {
+            setParameter(e.target.value);
+            setCommandSent(false);
+          }} />
         </div>
       </div>
       <div>
@@ -44,6 +54,11 @@ const CommandTab = (props: Props) => {
         </div>
       </div>
     </div>
+    {commandSent && (
+      <div className={styles.success}>
+        Command sent successfully
+      </div>
+    )}
 
   </div>
 }
