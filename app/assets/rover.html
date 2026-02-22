@@ -1,0 +1,126 @@
+<html>
+<head>
+</head>
+<body>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <table id="controls" style="width: 80%; font-family: Tahoma;">
+            <tbody>
+                <tr id="apiKeyPlaceholder">
+                    <td colspan="3" style="font-size: 24px;">
+                        API Key:<br/>
+                        <input id="apiKey" type="text" style="width: 100%;" /><br />
+                        <button style="font-size: 32px;" onClick="setApiKey()">Set API Key</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button style="font-size: 32px;" onClick="setCommand('light', '1')">LIGHT: ON</button>
+                    </td>
+                    <td>
+                        <button style="font-size: 32px;" onClick="setCommand('light', '0')">LIGHT: OFF</button>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td width="33%">&nbsp;</td>
+                    <td width="33%" style="text-align: center;"><button style="font-size: 100px;" onClick="setCommand('fw', '')">&uarr;</button></td>
+                    <td width="33%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"><button style="font-size: 100px;" onClick="setCommand('tl1', '')">&larr;</button></td>
+                    <td>&nbsp;</td>
+                    <td style="text-align: right;"><button style="font-size: 100px;" onClick="setCommand('tr1', '')">&rarr;</button></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td style="text-align: center;"><button style="font-size: 100px;" onClick="setCommand('bw', '')">&darr;</button></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div id="turnParams">
+                            <button style="font-size: 64px; margin-right: 60px;" onClick="setParameter('300')">300</button>
+                            <button style="font-size: 64px; margin-right: 60px;" onClick="setParameter('600')">600</button>
+                            <button style="font-size: 64px; margin-right: 60px;" onClick="setParameter('1200')">1200</button>
+                            <button style="font-size: 64px;" onClick="setParameter('2400')">2400</button>
+                        </div>
+                        <div id="moveParams">
+                            <button style="font-size: 64px; margin-right: 60px;" onClick="setParameter('1')">1</button>
+                            <button style="font-size: 64px; margin-right: 60px;" onClick="setParameter('2')">2</button>
+                            <button style="font-size: 64px; margin-right: 60px;" onClick="setParameter('3')">3</button>
+                            <button style="font-size: 64px;" onClick="setParameter('4')">4</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="padding-top: 20px;">
+                    <td>
+                        <input id="cmd" type="text" style="width: 120px;" />
+                        <input id="param" type="text" style="width: 80px;" />
+                        <button style="font-size: 64px;" onClick="send()">SEND</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        <!--
+            var selectedCommand = "";
+            var selectedParameter = "";
+
+            function setApiKey() {
+                var apiKey = document.getElementById('apiKey').value;
+                localStorage.setItem('apiKey', apiKey);
+                document.getElementById('apiKeyPlaceholder').style.display = 'none';
+            }
+
+            function setCommand(cmd, param) {
+                selectedCommand = cmd;
+                selectedParameter = param;
+
+                if (cmd == 'fw' || cmd == 'bw') {
+                    document.getElementById('moveParams').style.display = 'flex';
+                    document.getElementById('turnParams').style.display = 'none';
+                }
+                else if (cmd == 'tl1' || cmd == 'tr1') {
+                    document.getElementById('moveParams').style.display = 'none';
+                    document.getElementById('turnParams').style.display = 'flex';
+                } else {
+                    document.getElementById('moveParams').style.display = 'none';
+                    document.getElementById('turnParams').style.display = 'none';
+                }
+            }
+
+            function setParameter(param) {
+                selectedParameter = param;
+            }
+
+            function send() {
+                fetch("https://www.microconfy.com/api/command/" + localStorage.getItem('apiKey'), {
+                    method: "POST",
+                    headers: { "Content-type": 'application/json' },
+                    body:  JSON.stringify({ command: selectedCommand, parameter: selectedParameter })
+                })
+            }
+            
+            document.getElementById('apiKey').value = localStorage.getItem('apiKey');
+            document.getElementById('moveParams').style.display = 'none';
+            document.getElementById('turnParams').style.display = 'none';
+        //-->
+    </script>
+</body>
+</html>
